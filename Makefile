@@ -1,10 +1,13 @@
-.PHONY: help build up down logs ps test
+.PHONY: help build build-local up down logs ps test
 .DEFAULT_GOAL := help
 
 DOCKER_TAG := latest
-build: ## Build docker image with git revision
+build: ## Build docker image to deploy
 	docker build -t budougumi0617/gotodo:${DOCKER_TAG} \
 		--target deploy ./
+
+build-local: ## Build docker image to local development
+	docker compose build --no-cache
 
 up: ## Do docker compose up with hot reload
 	docker compose up -d

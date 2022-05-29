@@ -31,3 +31,11 @@ func (ts *TaskStore) Get(id int) (*entity.Task, error) {
 	}
 	return nil, ErrNotFound
 }
+
+func (ts *TaskStore) All() entity.Tasks {
+	var tasks entity.Tasks
+	for _, t := range ts.Tasks {
+		tasks = append(tasks, t)
+	}
+	return tasks
+}

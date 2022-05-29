@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/budougumi0617/go_todo_app/entity"
-
 	"github.com/budougumi0617/go_todo_app/store"
 )
 

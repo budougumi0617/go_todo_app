@@ -3,6 +3,8 @@ package handler
 import (
 	"net/http"
 
+	"github.com/budougumi0617/go_todo_app/entity"
+
 	"github.com/budougumi0617/go_todo_app/store"
 )
 
@@ -11,9 +13,9 @@ type ListTask struct {
 }
 
 type task struct {
-	ID     int    `json:"id"`
-	Title  string `json:"title"`
-	Status string `json:"status"`
+	ID     entity.TaskID `json:"id"`
+	Title  string        `json:"title"`
+	Status string        `json:"status"`
 }
 
 func (lt *ListTask) ServeHTTP(w http.ResponseWriter, r *http.Request) {

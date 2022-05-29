@@ -2,8 +2,10 @@ package entity
 
 import "time"
 
+type TaskID int
+
 type Task struct {
-	ID      int       `json:"id"`
+	ID      TaskID    `json:"id"`
 	Title   string    `json:"title"`
 	Status  string    `json:"status" `
 	Created time.Time `json:"created"`

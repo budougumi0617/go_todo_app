@@ -16,13 +16,32 @@ func TestListTask(t *testing.T) {
 		rspFile string
 	}
 	tests := map[string]struct {
-		reqFile string
-		want    want
+		tasks map[int]*entity.Task
+		want  want
 	}{
 		"ok": {
+			tasks: map[int]*entity.Task{
+				1: {
+					ID:     1,
+					Title:  "test1",
+					Status: "todo",
+				},
+				2: {
+					ID:     2,
+					Title:  "test2",
+					Status: "done",
+				},
+			},
 			want: want{
 				status:  http.StatusOK,
 				rspFile: "testdata/list_task/ok_rsp.json.golden",
+			},
+		},
+		"empty": {
+			tasks: map[int]*entity.Task{},
+			want: want{
+				status:  http.StatusOK,
+				rspFile: "testdata/list_task/empty_rsp.json.golden",
 			},
 		},
 	}
@@ -34,20 +53,7 @@ func TestListTask(t *testing.T) {
 			w := httptest.NewRecorder()
 			r := httptest.NewRequest(http.MethodGet, "/tasks", nil)
 
-			sut := ListTask{Store: &store.TaskStore{
-				Tasks: map[int]*entity.Task{
-					1: {
-						ID:     1,
-						Title:  "test1",
-						Status: "todo",
-					},
-					2: {
-						ID:     2,
-						Title:  "test2",
-						Status: "done",
-					},
-				},
-			}}
+			sut := ListTask{Store: &store.TaskStore{Tasks: tt.tasks}}
 			sut.ServeHTTP(w, r)
 
 			resp := w.Result()

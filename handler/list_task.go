@@ -19,7 +19,7 @@ type task struct {
 func (lt *ListTask) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 	tasks := lt.Store.All()
-	var rsp []task
+	rsp := []task{}
 	for _, t := range tasks {
 		rsp = append(rsp, task{
 			ID:     t.ID,

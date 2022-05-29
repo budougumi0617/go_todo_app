@@ -33,9 +33,9 @@ func (ts *TaskStore) Get(id int) (*entity.Task, error) {
 }
 
 func (ts *TaskStore) All() entity.Tasks {
-	var tasks entity.Tasks
-	for _, t := range ts.Tasks {
-		tasks = append(tasks, t)
+	tasks := make([]*entity.Task, len(ts.Tasks))
+	for i, t := range ts.Tasks {
+		tasks[i-1] = t
 	}
 	return tasks
 }

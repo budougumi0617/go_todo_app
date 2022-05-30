@@ -2,7 +2,7 @@ package entity
 
 import "time"
 
-type TaskID int
+type TaskID int64
 
 type Task struct {
 	ID      TaskID    `json:"id"`

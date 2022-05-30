@@ -8,7 +8,7 @@ import (
 
 func (r *Repository) AddTask(ctx context.Context, db Execer, t *entity.Task) error {
 	sql := `INSERT INTO task (title, status, created, modified) VALUES (?, ?, ?, ?, ?)`
-	result, err := db.ExecContext(ctx, sql, t.Title, t.Status, r.Clocker.Now(ctx), r.Clocker.Now(ctx))
+	result, err := db.ExecContext(ctx, sql, t.Title, t.Status, r.Clocker.Now(), r.Clocker.Now())
 	if err != nil {
 		return err
 	}

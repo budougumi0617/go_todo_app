@@ -1,12 +1,11 @@
 package clock
 
 import (
-	"context"
 	"time"
 )
 
 type Clocker interface {
-	Now(ctx context.Context) time.Time
+	Now() time.Time
 }
 
 type RealClocker struct{}

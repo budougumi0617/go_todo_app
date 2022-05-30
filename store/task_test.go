@@ -5,6 +5,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/jmoiron/sqlx"
+
+	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/budougumi0617/go_todo_app/clock"
 	"github.com/budougumi0617/go_todo_app/entity"
 	"github.com/budougumi0617/go_todo_app/testutil"
@@ -75,5 +78,47 @@ func TestRepository_ListTasks(t *testing.T) {
 	}
 	if d := cmp.Diff(gots, wants, cmpopts.EquateApproxTime(1*time.Second)); len(d) != 0 {
 		t.Errorf("differs: (-got +want)\n%s", d)
+	}
+}
+
+func TestRepository_AddTask(t *testing.T) {
+	ctx := context.Background()
+
+	c := clock.FixedClocker{}
+	wantID := 20
+	okTask := &entity.Task{
+		Title:    "ok task",
+		Status:   "todo",
+		Created:  c.Now(),
+		Modified: c.Now(),
+	}
+
+	tests := map[string]struct {
+		task    *entity.Task
+		wantErr bool
+	}{
+		"ok": {
+			task: okTask,
+		},
+	}
+	for n, tt := range tests {
+		t.Run(n, func(t *testing.T) {
+			db, mock, err := sqlmock.New()
+			if err != nil {
+				t.Fatal(err)
+			}
+			t.Cleanup(func() { db.Close() })
+			mock.ExpectExec(
+				// エスケープが必要
+				`INSERT INTO task \(title, status, created, modified\) VALUES \(\?, \?, \?, \?, \?\)`,
+			).WithArgs(tt.task.Title, tt.task.Status, c.Now(), c.Now()).
+				WillReturnResult(sqlmock.NewResult(int64(wantID), 1))
+
+			xdb := sqlx.NewDb(db, "mysql")
+			r := &Repository{Clocker: c}
+			if err := r.AddTask(ctx, xdb, tt.task); (err != nil) != tt.wantErr {
+				t.Errorf("AddTask() error = %v, wantErr %v", err, tt.wantErr)
+			}
+		})
 	}
 }

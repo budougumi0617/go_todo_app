@@ -24,12 +24,12 @@ func TestListTask(t *testing.T) {
 				1: {
 					ID:     1,
 					Title:  "test1",
-					Status: "todo",
+					Status: entity.TaskStatusTodo,
 				},
 				2: {
 					ID:     2,
 					Title:  "test2",
-					Status: "done",
+					Status: entity.TaskStatusDone,
 				},
 			},
 			want: want{

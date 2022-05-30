@@ -26,8 +26,7 @@ func (at *AddTask) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}, http.StatusInternalServerError)
 		return
 	}
-	err := validator.New().Struct(b)
-	if err != nil {
+	if err := at.Validator.Struct(b); err != nil {
 		RespondJSON(ctx, w, &ErrResponse{
 			Message: err.Error(),
 		}, http.StatusBadRequest)
@@ -36,7 +35,7 @@ func (at *AddTask) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	t := &entity.Task{
 		Title:   b.Title,
-		Status:  "todo",
+		Status:  entity.TaskStatusTodo,
 		Created: time.Now(),
 	}
 	id, err := at.Store.Add(t)

@@ -24,7 +24,7 @@ var (
 	ErrAlreadyEntry = errors.New("duplicate entry")
 )
 
-func New(ctx context.Context, cfg *config.Config) (*sqlx.DB, error) {
+func New(ctx context.Context, cfg *config.Config) (*sqlx.DB, func(), error) {
 	// sqlx.Connectを使うと内部でpingする。
 	db, err := sql.Open("mysql",
 		fmt.Sprintf(
@@ -35,15 +35,16 @@ func New(ctx context.Context, cfg *config.Config) (*sqlx.DB, error) {
 		),
 	)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	// Openは実際に接続テストが行われない。
 	ctx, cancel := context.WithTimeout(ctx, 2*time.Second)
 	defer cancel()
 	if err := db.PingContext(ctx); err != nil {
-		return nil, err
+		return nil, func() { _ = db.Close() }, err
 	}
-	return sqlx.NewDb(db, "mysql"), nil
+	xdb := sqlx.NewDb(db, "mysql")
+	return xdb, func() { _ = db.Close() }, nil
 }
 
 type Repository struct {

@@ -3,7 +3,10 @@ package store
 import (
 	"context"
 	"fmt"
+	"strconv"
 	"time"
+
+	"github.com/budougumi0617/go_todo_app/entity"
 
 	"github.com/budougumi0617/go_todo_app/config"
 	"github.com/go-redis/redis/v8"
@@ -23,10 +26,19 @@ type KVS struct {
 	Cli *redis.Client
 }
 
-func (k *KVS) Save(ctx context.Context, key string, userID string) error {
-	return k.Cli.Set(ctx, key, userID, 30*time.Minute).Err()
+func (k *KVS) Save(ctx context.Context, key string, userID entity.UserID) error {
+	id := int64(userID)
+	return k.Cli.Set(ctx, key, id, 30*time.Minute).Err()
 }
 
-func (k *KVS) Load(ctx context.Context, key string) (string, error) {
-	return k.Cli.Get(ctx, key).Result()
+func (k *KVS) Load(ctx context.Context, key string) (entity.UserID, error) {
+	result, err := k.Cli.Get(ctx, key).Result()
+	if err != nil {
+		return 0, err
+	}
+	id, err := strconv.Atoi(result)
+	if err != nil {
+		return 0, fmt.Errorf("%q is not to number :%w", result, err)
+	}
+	return entity.UserID(id), nil
 }

@@ -53,7 +53,7 @@ func TestListTask(t *testing.T) {
 			w := httptest.NewRecorder()
 			r := httptest.NewRequest(http.MethodGet, "/tasks", nil)
 
-			sut := ListTask{Store: &store.TaskStore{Tasks: tt.tasks}}
+			sut := ListTask{Repo: &store.TaskStore{Tasks: tt.tasks}}
 			sut.ServeHTTP(w, r)
 
 			resp := w.Result()

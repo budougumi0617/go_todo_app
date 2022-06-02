@@ -20,9 +20,6 @@ services:
       - .:/app
     ports:
       - "18000:8080"
-    links:
-      - todo-db
-      - todo-redis
   todo-db:
     image: mysql:8.0.29
     platform: linux/amd64

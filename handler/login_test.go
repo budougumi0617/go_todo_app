@@ -62,7 +62,7 @@ func TestLogin_ServeHTTP(t *testing.T) {
 			w := httptest.NewRecorder()
 			r := httptest.NewRequest(
 				http.MethodPost,
-				"/tasks",
+				"/login",
 				bytes.NewReader(testutil.LoadFile(t, tt.reqFile)),
 			)
 

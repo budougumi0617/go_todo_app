@@ -2,6 +2,7 @@ package store
 
 import (
 	"context"
+	"errors"
 	"testing"
 	"time"
 
@@ -56,8 +57,9 @@ func TestKVS_Load(t *testing.T) {
 
 		key := "TestKVS_Save_notFound"
 		ctx := context.Background()
-		if got, err := sut.Load(ctx, key); err == nil {
-			t.Errorf("want no error, but got %v(value = %d)", err, got)
+		got, err := sut.Load(ctx, key)
+		if err == nil || !errors.Is(err, ErrNotFound) {
+			t.Errorf("want %v, but got %v(value = %d)", ErrNotFound, err, got)
 		}
 	})
 }

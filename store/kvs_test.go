@@ -10,6 +10,8 @@ import (
 )
 
 func TestKVS_Save(t *testing.T) {
+	t.Parallel()
+
 	cli := testutil.OpenRedisForTest(t)
 
 	sut := &KVS{Cli: cli}
@@ -25,10 +27,14 @@ func TestKVS_Save(t *testing.T) {
 }
 
 func TestKVS_Load(t *testing.T) {
+	t.Parallel()
+
 	cli := testutil.OpenRedisForTest(t)
+	sut := &KVS{Cli: cli}
 
 	t.Run("ok", func(t *testing.T) {
-		sut := &KVS{Cli: cli}
+		t.Parallel()
+
 		key := "TestKVS_Load_ok"
 		uid := entity.UserID(1234)
 		ctx := context.Background()
@@ -46,7 +52,8 @@ func TestKVS_Load(t *testing.T) {
 	})
 
 	t.Run("notFound", func(t *testing.T) {
-		sut := &KVS{Cli: cli}
+		t.Parallel()
+
 		key := "TestKVS_Save_notFound"
 		ctx := context.Background()
 		if got, err := sut.Load(ctx, key); err == nil {

@@ -11,6 +11,8 @@ import (
 )
 
 func OpenDBForTest(t *testing.T) *sqlx.DB {
+	t.Helper()
+
 	port := 33306
 	if _, defined := os.LookupEnv("CI"); defined {
 		port = 3306

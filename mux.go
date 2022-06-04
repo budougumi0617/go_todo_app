@@ -31,7 +31,7 @@ func NewMux(ctx context.Context, cfg *config.Config) (http.Handler, func(), erro
 	if err != nil {
 		return nil, cleanup, err
 	}
-	jwter, err := auth.NewJWTer(rcli)
+	jwter, err := auth.NewJWTer(rcli, clocker)
 	if err != nil {
 		return nil, cleanup, err
 	}

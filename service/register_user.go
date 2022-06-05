@@ -17,16 +17,16 @@ type RegisterUser struct {
 func (r *RegisterUser) RegisterUser(ctx context.Context, name, password, role string) (*entity.User, error) {
 	pw, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
-		return nil, fmt.Errorf("cannot encrypt password: %w", err)
+		return nil, fmt.Errorf("cannot hash password: %w", err)
 	}
-	t := &entity.User{
+	u := &entity.User{
 		Name:     name,
 		Password: string(pw),
 		Role:     role,
 	}
 
-	if err := r.Repo.RegisterUser(ctx, r.DB, t); err != nil {
+	if err := r.Repo.RegisterUser(ctx, r.DB, u); err != nil {
 		return nil, fmt.Errorf("failed to register: %w", err)
 	}
-	return t, nil
+	return u, nil
 }

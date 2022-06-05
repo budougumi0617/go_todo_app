@@ -13,7 +13,7 @@ CREATE TABLE `user`
 CREATE TABLE `task`
 (
     `id`       BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'タスクの識別子',
-    `user_id`  BIGINT UNSIGNED NOT NULL COMMENT 'タスクを作成したユーザの識別子',
+    `user_id`  BIGINT UNSIGNED NOT NULL COMMENT 'タスクを作成したユーザーの識別子',
     `title`    VARCHAR(128) NOT NULL COMMENT 'タスクのタイトル',
     `status`   VARCHAR(20)  NOT NULL COMMENT 'タスクの状態',
     `created`  DATETIME(6) NOT NULL COMMENT 'レコード作成日時',

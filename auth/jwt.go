@@ -62,7 +62,7 @@ func parse(rawKey []byte) (jwk.Key, error) {
 	return key, nil
 }
 
-func (j *JWTer) GenJWT(ctx context.Context, u entity.User) ([]byte, error) {
+func (j *JWTer) GenerateToken(ctx context.Context, u entity.User) ([]byte, error) {
 	tok, err := jwt.NewBuilder().
 		JwtID(uuid.New().String()).
 		Issuer(`github.com/budougumi0617/go_todo_app`).
@@ -76,7 +76,7 @@ func (j *JWTer) GenJWT(ctx context.Context, u entity.User) ([]byte, error) {
 		Claim(UserNameKey, u.Name).
 		Build()
 	if err != nil {
-		return nil, fmt.Errorf("GetJWT: failed to build token: %w", err)
+		return nil, fmt.Errorf("GenerateToken: failed to build token: %w", err)
 	}
 	if err := j.Store.Save(ctx, tok.JwtID(), u.ID); err != nil {
 		return nil, err
@@ -90,7 +90,7 @@ func (j *JWTer) GenJWT(ctx context.Context, u entity.User) ([]byte, error) {
 	return signed, nil
 }
 
-func (j *JWTer) GetJWT(ctx context.Context, r *http.Request) (jwt.Token, error) {
+func (j *JWTer) GetToken(ctx context.Context, r *http.Request) (jwt.Token, error) {
 	token, err := jwt.ParseRequest(
 		r,
 		jwt.WithKey(jwa.RS256, j.PublicKey),
@@ -100,11 +100,11 @@ func (j *JWTer) GetJWT(ctx context.Context, r *http.Request) (jwt.Token, error) 
 		return nil, err
 	}
 	if err := jwt.Validate(token, jwt.WithClock(j.Clocker)); err != nil {
-		return nil, fmt.Errorf("GetJWT: failed to validate token: %w", err)
+		return nil, fmt.Errorf("GetToken: failed to validate token: %w", err)
 	}
 	// Redisから削除して手動でexpireさせていることもありうる。
 	if _, err := j.Store.Load(ctx, token.JwtID()); err != nil {
-		return nil, fmt.Errorf("GetJWT: %q expired: %w", token.JwtID(), err)
+		return nil, fmt.Errorf("GetToken: %q expired: %w", token.JwtID(), err)
 	}
 	return token, nil
 }
@@ -113,7 +113,7 @@ type userIDKey struct{}
 type roleKey struct{}
 
 func (j *JWTer) FillContext(r *http.Request) (*http.Request, error) {
-	token, err := j.GetJWT(r.Context(), r)
+	token, err := j.GetToken(r.Context(), r)
 	if err != nil {
 		return nil, err
 	}

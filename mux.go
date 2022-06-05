@@ -42,9 +42,9 @@ func NewMux(ctx context.Context, cfg *config.Config) (http.Handler, func(), erro
 	mux.Post("/register", ru.ServeHTTP)
 	l := &handler.Login{
 		Service: &service.Login{
-			DB:    db,
-			Repo:  &r,
-			JWTer: jwter,
+			DB:             db,
+			Repo:           &r,
+			TokenGenerator: jwter,
 		},
 		Validator: v,
 	}

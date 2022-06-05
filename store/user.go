@@ -29,7 +29,7 @@ func (r *Repository) RegisterUser(ctx context.Context, db Execer, u *entity.User
 	return nil
 }
 
-func (r Repository) GetUser(
+func (r *Repository) GetUser(
 	ctx context.Context, db Queryer, name string,
 ) (*entity.User, error) {
 	u := &entity.User{}

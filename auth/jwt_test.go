@@ -48,7 +48,7 @@ func TestJWTer(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	signed, err := sut.GenJWT(context.Background(), u)
+	signed, err := sut.GenerateToken(context.Background(), u)
 	if err != nil {
 		t.Fatalf("failed to generate jwt: %s", err)
 	}
@@ -104,7 +104,7 @@ func TestJWTer_GenJWT(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	got, err := sut.GenJWT(ctx, *u)
+	got, err := sut.GenerateToken(ctx, *u)
 	if err != nil {
 		t.Fatalf("not want err: %v", err)
 	}
@@ -155,12 +155,12 @@ func TestJWTer_GetJWT(t *testing.T) {
 		nil,
 	)
 	req.Header.Set(`Authorization`, fmt.Sprintf(`Bearer %s`, signed))
-	got, err := sut.GetJWT(ctx, req)
+	got, err := sut.GetToken(ctx, req)
 	if err != nil {
 		t.Fatalf("want no error, but got %v", err)
 	}
 	if !reflect.DeepEqual(got, want) {
-		t.Errorf("GetJWT() got = %v, want %v", got, want)
+		t.Errorf("GetToken() got = %v, want %v", got, want)
 	}
 }
 
@@ -235,7 +235,7 @@ func TestJWTer_GetJWT_NG(t *testing.T) {
 				nil,
 			)
 			req.Header.Set(`Authorization`, fmt.Sprintf(`Bearer %s`, signed))
-			got, err := sut.GetJWT(ctx, req)
+			got, err := sut.GetToken(ctx, req)
 			if err == nil {
 				t.Errorf("want error, but got nil")
 			}

@@ -10,7 +10,11 @@ jobs:
     services:
       mysql:
         image: mysql:8.0.29
-        options: --health-cmd "mysqladmin ping -h localhost" --health-interval 20s --health-timeout 10s --health-retries 10
+        options: >-
+          --health-cmd "mysqladmin ping -h localhost"
+          --health-interval 20s
+          --health-timeout 10s
+          --health-retries 10
         ports:
           - 3306:3306
         env:

@@ -10,6 +10,8 @@ import (
 )
 
 func OpenRedisForTest(t *testing.T) *redis.Client {
+	t.Helper()
+
 	host := "127.0.0.1"
 	port := 36379
 	if _, defined := os.LookupEnv("CI"); defined {

@@ -73,7 +73,7 @@ type Queryer interface {
 }
 
 var (
-	// インターフェイスが期待通りに宣言されているか確認
+	// インターフェースが期待通りに宣言されているか確認
 	_ Beginner = (*sqlx.DB)(nil)
 	_ Preparer = (*sqlx.DB)(nil)
 	_ Queryer  = (*sqlx.DB)(nil)

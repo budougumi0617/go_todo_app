@@ -9,12 +9,14 @@ import (
 func (r *Repository) AddTask(
 	ctx context.Context, db Execer, t *entity.Task,
 ) error {
+	t.Created = r.Clocker.Now()
+	t.Modified = r.Clocker.Now()
 	sql := `INSERT INTO task
 			(user_id, title, status, created, modified)
 	VALUES (?, ?, ?, ?, ?)`
 	result, err := db.ExecContext(
 		ctx, sql, t.UserID, t.Title, t.Status,
-		r.Clocker.Now(), r.Clocker.Now(),
+		t.Created, t.Modified,
 	)
 	if err != nil {
 		return err

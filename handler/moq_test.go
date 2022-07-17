@@ -144,3 +144,163 @@ func (mock *AddTaskServiceMock) AddTaskCalls() []struct {
 	mock.lockAddTask.RUnlock()
 	return calls
 }
+
+// Ensure, that RegisterUserServiceMock does implement RegisterUserService.
+// If this is not the case, regenerate this file with moq.
+var _ RegisterUserService = &RegisterUserServiceMock{}
+
+// RegisterUserServiceMock is a mock implementation of RegisterUserService.
+//
+// 	func TestSomethingThatUsesRegisterUserService(t *testing.T) {
+//
+// 		// make and configure a mocked RegisterUserService
+// 		mockedRegisterUserService := &RegisterUserServiceMock{
+// 			RegisterUserFunc: func(ctx context.Context, name string, password string, role string) (*entity.User, error) {
+// 				panic("mock out the RegisterUser method")
+// 			},
+// 		}
+//
+// 		// use mockedRegisterUserService in code that requires RegisterUserService
+// 		// and then make assertions.
+//
+// 	}
+type RegisterUserServiceMock struct {
+	// RegisterUserFunc mocks the RegisterUser method.
+	RegisterUserFunc func(ctx context.Context, name string, password string, role string) (*entity.User, error)
+
+	// calls tracks calls to the methods.
+	calls struct {
+		// RegisterUser holds details about calls to the RegisterUser method.
+		RegisterUser []struct {
+			// Ctx is the ctx argument value.
+			Ctx context.Context
+			// Name is the name argument value.
+			Name string
+			// Password is the password argument value.
+			Password string
+			// Role is the role argument value.
+			Role string
+		}
+	}
+	lockRegisterUser sync.RWMutex
+}
+
+// RegisterUser calls RegisterUserFunc.
+func (mock *RegisterUserServiceMock) RegisterUser(ctx context.Context, name string, password string, role string) (*entity.User, error) {
+	if mock.RegisterUserFunc == nil {
+		panic("RegisterUserServiceMock.RegisterUserFunc: method is nil but RegisterUserService.RegisterUser was just called")
+	}
+	callInfo := struct {
+		Ctx      context.Context
+		Name     string
+		Password string
+		Role     string
+	}{
+		Ctx:      ctx,
+		Name:     name,
+		Password: password,
+		Role:     role,
+	}
+	mock.lockRegisterUser.Lock()
+	mock.calls.RegisterUser = append(mock.calls.RegisterUser, callInfo)
+	mock.lockRegisterUser.Unlock()
+	return mock.RegisterUserFunc(ctx, name, password, role)
+}
+
+// RegisterUserCalls gets all the calls that were made to RegisterUser.
+// Check the length with:
+//     len(mockedRegisterUserService.RegisterUserCalls())
+func (mock *RegisterUserServiceMock) RegisterUserCalls() []struct {
+	Ctx      context.Context
+	Name     string
+	Password string
+	Role     string
+} {
+	var calls []struct {
+		Ctx      context.Context
+		Name     string
+		Password string
+		Role     string
+	}
+	mock.lockRegisterUser.RLock()
+	calls = mock.calls.RegisterUser
+	mock.lockRegisterUser.RUnlock()
+	return calls
+}
+
+// Ensure, that LoginServiceMock does implement LoginService.
+// If this is not the case, regenerate this file with moq.
+var _ LoginService = &LoginServiceMock{}
+
+// LoginServiceMock is a mock implementation of LoginService.
+//
+// 	func TestSomethingThatUsesLoginService(t *testing.T) {
+//
+// 		// make and configure a mocked LoginService
+// 		mockedLoginService := &LoginServiceMock{
+// 			LoginFunc: func(ctx context.Context, name string, pw string) (string, error) {
+// 				panic("mock out the Login method")
+// 			},
+// 		}
+//
+// 		// use mockedLoginService in code that requires LoginService
+// 		// and then make assertions.
+//
+// 	}
+type LoginServiceMock struct {
+	// LoginFunc mocks the Login method.
+	LoginFunc func(ctx context.Context, name string, pw string) (string, error)
+
+	// calls tracks calls to the methods.
+	calls struct {
+		// Login holds details about calls to the Login method.
+		Login []struct {
+			// Ctx is the ctx argument value.
+			Ctx context.Context
+			// Name is the name argument value.
+			Name string
+			// Pw is the pw argument value.
+			Pw string
+		}
+	}
+	lockLogin sync.RWMutex
+}
+
+// Login calls LoginFunc.
+func (mock *LoginServiceMock) Login(ctx context.Context, name string, pw string) (string, error) {
+	if mock.LoginFunc == nil {
+		panic("LoginServiceMock.LoginFunc: method is nil but LoginService.Login was just called")
+	}
+	callInfo := struct {
+		Ctx  context.Context
+		Name string
+		Pw   string
+	}{
+		Ctx:  ctx,
+		Name: name,
+		Pw:   pw,
+	}
+	mock.lockLogin.Lock()
+	mock.calls.Login = append(mock.calls.Login, callInfo)
+	mock.lockLogin.Unlock()
+	return mock.LoginFunc(ctx, name, pw)
+}
+
+// LoginCalls gets all the calls that were made to Login.
+// Check the length with:
+//     len(mockedLoginService.LoginCalls())
+func (mock *LoginServiceMock) LoginCalls() []struct {
+	Ctx  context.Context
+	Name string
+	Pw   string
+} {
+	var calls []struct {
+		Ctx  context.Context
+		Name string
+		Pw   string
+	}
+	mock.lockLogin.RLock()
+	calls = mock.calls.Login
+	mock.lockLogin.RUnlock()
+	return calls
+}

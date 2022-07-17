@@ -2,28 +2,20 @@ package store
 
 import (
 	"context"
-	"math/rand"
-	"strconv"
 	"testing"
 
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/budougumi0617/go_todo_app/clock"
 	"github.com/budougumi0617/go_todo_app/entity"
 	"github.com/budougumi0617/go_todo_app/testutil"
+	"github.com/budougumi0617/go_todo_app/testutil/fixture"
 	"github.com/google/go-cmp/cmp"
 	"github.com/jmoiron/sqlx"
 )
 
 func prepareUser(ctx context.Context, t *testing.T, db Execer) entity.UserID {
 	t.Helper()
-	c := clock.FixedClocker{}
-	u := entity.User{
-		Name:     strconv.Itoa(rand.Int()),
-		Password: "dummy",
-		Role:     "user",
-		Created:  c.Now(),
-		Modified: c.Now(),
-	}
+	u := fixture.User(nil)
 	result, err := db.ExecContext(ctx, "INSERT INTO user (name, password, role, created, modified) VALUES (?, ?, ?, ?, ?);", u.Name, u.Password, u.Role, u.Created, u.Modified)
 	if err != nil {
 		t.Fatalf("insert user: %v", err)
@@ -125,7 +117,7 @@ func TestRepository_AddTask(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { db.Close() })
+	t.Cleanup(func() { _ = db.Close() })
 	mock.ExpectExec(
 		// エスケープが必要
 		`INSERT INTO task \(user_id, title, status, created, modified\) VALUES \(\?, \?, \?, \?, \?\)`,

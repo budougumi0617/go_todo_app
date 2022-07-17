@@ -3,7 +3,6 @@ package store
 import (
 	"context"
 	"fmt"
-	"strconv"
 	"time"
 
 	"github.com/budougumi0617/go_todo_app/config"
@@ -31,13 +30,9 @@ func (k *KVS) Save(ctx context.Context, key string, userID entity.UserID) error 
 }
 
 func (k *KVS) Load(ctx context.Context, key string) (entity.UserID, error) {
-	result, err := k.Cli.Get(ctx, key).Result()
+	id, err := k.Cli.Get(ctx, key).Int64()
 	if err != nil {
-		return 0, err
-	}
-	id, err := strconv.Atoi(result)
-	if err != nil {
-		return 0, fmt.Errorf("%q is not to number :%w", result, err)
+		return 0, fmt.Errorf("failed to get by %q: %w", key, ErrNotFound)
 	}
 	return entity.UserID(id), nil
 }

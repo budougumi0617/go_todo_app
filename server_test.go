@@ -29,7 +29,7 @@ func TestServer_Run(t *testing.T) {
 	in := "message"
 	// どんなポート番号でリッスンしているのか確認
 	url := fmt.Sprintf("http://%s/%s", l.Addr().String(), in)
-	t.Logf("tray request to %q", url)
+	t.Logf("try request to %q", url)
 	rsp, err := http.Get(url)
 	if err != nil {
 		t.Errorf("failed to get: %+v", err)

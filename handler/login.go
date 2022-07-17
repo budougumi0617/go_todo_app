@@ -1,16 +1,11 @@
 package handler
 
 import (
-	"context"
 	"encoding/json"
 	"net/http"
 
 	"github.com/go-playground/validator/v10"
 )
-
-type LoginService interface {
-	Login(ctx context.Context, name, pw string) (string, error)
-}
 
 type Login struct {
 	Service   LoginService

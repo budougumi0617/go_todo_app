@@ -21,7 +21,8 @@
 | GET      | `/tasks`   | アクセストークンを使ってタスクを一覧する     |
 | GET      | `/admin`   | 管理者権限のユーザーのみがアクセスできる     |
 
-`Docker Compose`を利用してAPIサーバー、MySQL、Redisを起動します。
+`Docker Compose`を利用してAPIサーバー、MySQL、Redisを起動します。    
+主に実行するであろうコマンドは `Makefile` に事前定義されています。
 
 ```bash
 $ make
@@ -39,6 +40,21 @@ help                 Show options
 ```
 
 ### 動作確認方法
+このリポジトリのコードがローカルで実行できるか確認する手順です。
+
+#### サーバを起動する
+事前にDockerイメージを作成しておきます。
+```bash
+$ make build-local
+```
+Docker Composeを使って各サービスを起動します。
+```bash
+$ make up
+```
+MySQLにマイグレーションを実行します。
+```bash
+$ make migrate
+```
 ユーザーを作成します。
 ```bash
 $ curl -X POST localhost:18000/register -d '{"name": "budou", "password":"test", "role":"admin"}'

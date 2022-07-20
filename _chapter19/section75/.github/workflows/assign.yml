@@ -1,0 +1,16 @@
+name: auto assign
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+
+jobs:
+  add_assignees:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-ecosystem/action-add-assignees@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          assignees: ${{ github.actor }}

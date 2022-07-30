@@ -2,11 +2,12 @@
 このリポジトリは書籍「詳解Go言語Webアプリケーション開発」のサンプルコードリポジトリです。
 
 
-| 項目   | データ                                  |
-|------|--------------------------------------|
-| 書籍名  | 詳解Go言語Webアプリケーション開発                  |
-| URL  | https://www.c-r.com/book/detail/1462 |
-| ISBN | 978-4-86354-372-0                    |
+| 項目   | データ                                                              |
+|------|------------------------------------------------------------------|
+| 書籍名  | 詳解Go言語Webアプリケーション開発                                              |
+| URL  | https://www.c-r.com/book/detail/1462                             |
+| ISBN | 978-4-86354-372-0                                                |
+| 正誤表  | https://github.com/budougumi0617/go_todo_app/blob/main/errata.md |
 
 ## 作成するアプリについて
 このリポジトリで作成するWebアプリケーションは認証付きのTODOタスクを管理するAPIサーバーです。
@@ -114,6 +115,8 @@ $ curl -XGET -H "Authorization: Bearer $(curl -XPOST localhost:18000/login -d '{
 
 ## 書籍・コードの内容について
 - コードに対するご指摘はIssueを作成してください。
-    - https://github.com/budougumi0617/go_todo_app/issues
+  - https://github.com/budougumi0617/go_todo_app/issues
 - 書籍内容に対するご指摘・ご質問などはDiscussionsで受け付けています。issueを作成するかDiscussionを作成するか迷った際はDiscussionの作成をお願いします。
-    - https://github.com/budougumi0617/go_todo_app/discussions
+  - https://github.com/budougumi0617/go_todo_app/discussions
+- 正誤表もこのリポジトリにあります。
+  - [https://github.com/budougumi0617/go_todo_app/blob/main/errata.md](./errata.md)

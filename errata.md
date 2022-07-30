@@ -1,6 +1,6 @@
 # 「詳解Go言語Webアプリケーション開発」正誤表
 
-『詳解Go言語Webアプリケーション開発』は多くのレビューアのご協力により出版されましたが、誤字や内容に不備があった場合、すべて @budugumi0617 の責任です。  
+『詳解Go言語Webアプリケーション開発』は多くのレビューアのご協力により出版されましたが、誤字や内容に不備があった場合、すべて [@budugumi0617](https://github.com/budougumi0617) の責任です。  
 誤りに気づかれた方は、[本リポジトリのDiscussionsにてご指摘](https://github.com/budougumi0617/go_todo_app/discussions) お願いいたします。
 
 
@@ -80,4 +80,4 @@ mux.Post("/register", ru.ServeHTTP)
 # 第2刷（2022年8月19日発行）
 **P89 リスト9.1　無名関数は状態を持てる**
 `リスト9.1`ではなく、`リスト9.2`に修正。  
-@YuyaAbo さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/22) ありがとうございました。
+[@YuyaAbo](https://github.com/YuyaAbo) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/22) ありがとうございました。

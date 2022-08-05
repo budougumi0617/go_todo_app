@@ -96,7 +96,7 @@ mux.Post("/register", ru.ServeHTTP)
 [@Mo3g4u](https://github.com/Mo3g4u)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/25)ありがとうございました（2022/08/06）
 
 **P173 リスト17.7　「handler/add_task.go」のタスクを追加する実装**
-`}{ID: id}` ではなく、`}{ID: int(id)}`に修正。
+`}{ID: id}` ではなく、`}{ID: int(id)}`に修正。（2022/08/06）
 
 **P175 リスト17.8　ファイルを使った入出力の検証**
-`Tasks: map[int]*entity.Task{},` ではなく、`Tasks: map[entity.TaskID]*entity.Task{},`に修正。
+`Tasks: map[int]*entity.Task{},` ではなく、`Tasks: map[entity.TaskID]*entity.Task{},`に修正。（2022/08/06）

@@ -86,6 +86,11 @@ mux.Post("/register", ru.ServeHTTP)
 「GitHub Actiuons上で実行したテスト結果」ではなく、「GitHub Actions上で実行したテスト結果」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さんご指摘ありがとうございました（2022/08/06）
 
+
+**P163 リスト16.16　「httptest」パッケージを使った擬似的なHTTPリクエストのテスト**
+「`{"status": " ok"}`」ではなく、「`{"status": "ok"}`」に修正。  
+[@kdnakt](https://twitter.com/kdnakt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/29)ご指摘ありがとうございました（2022/08/10）
+
 **P167 リスト17.3　「store/store.go」に実装したタスクの簡易管理方法**  
 `Tasks`変数は`&TaskStore{Tasks: map[int]*entity.Task{}}`ではなく、`&TaskStore{Tasks: map[entity.TaskID]*entity.Task{}}`に修正。  
 `TaskStore`構造体の`LastID`プロパティは`int`ではなく、`entity.TaskID`に修正。  
@@ -100,3 +105,7 @@ mux.Post("/register", ru.ServeHTTP)
 
 **P175 リスト17.8　ファイルを使った入出力の検証**
 `Tasks: map[int]*entity.Task{},` ではなく、`Tasks: map[entity.TaskID]*entity.Task{},`に修正。（2022/08/06）
+
+**P244 SECTION-085 ユーザーログインエンドポイントの実装**
+「`LoginServiceインターフェースはauth/service.goに追記し，`」ではなく「`LoginServiceインターフェースはhandler/service.goに追記し，`」に修正。  
+[@manaty226](https://github.com/manaty226)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/27)ご指摘ありがとうございました（2022/08/10）

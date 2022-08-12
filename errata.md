@@ -109,3 +109,7 @@ mux.Post("/register", ru.ServeHTTP)
 **P244 SECTION-085 ユーザーログインエンドポイントの実装**
 「`LoginServiceインターフェースはauth/service.goに追記し，`」ではなく「`LoginServiceインターフェースはhandler/service.goに追記し，`」に修正。  
 [@manaty226](https://github.com/manaty226)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/27)ご指摘ありがとうございました（2022/08/10）
+
+**P250 リスト20.32　「POST /login」エンドポイントを追加する**
+「`JWTer: jwter,`」ではなく、「`TokenGenerator: jwter,`」に修正。  
+[@yskgc](https://github.com/yskgc)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/31)ご指摘ありがとうございました（2022/08/12）

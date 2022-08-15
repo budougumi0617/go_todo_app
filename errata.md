@@ -82,6 +82,11 @@ mux.Post("/register", ru.ServeHTTP)
 `リスト9.1`ではなく、`リスト9.2`に修正。  
 [@YuyaAbo](https://github.com/YuyaAbo) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/22) ありがとうございました。
 
+
+**P112 リスト12.6　ログミドルウェアの実装例**
+`WriteHeader`メソッド内の「`r.status = status`」を「`r.status = statusCode`」に修正。  
+[@litencatt](https://github.com/litencatt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/33) ありがとうございました（2022/08/15）
+
 **P148 テストとコードカバレッジ取得の自動実行**
 「GitHub Actiuons上で実行したテスト結果」ではなく、「GitHub Actions上で実行したテスト結果」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さんご指摘ありがとうございました（2022/08/06）
@@ -105,6 +110,11 @@ mux.Post("/register", ru.ServeHTTP)
 
 **P175 リスト17.8　ファイルを使った入出力の検証**
 `Tasks: map[int]*entity.Task{},` ではなく、`Tasks: map[entity.TaskID]*entity.Task{},`に修正。（2022/08/06）
+
+**P187 SECTION-072 MySQL実行環境の構築**
+「GitHub Actionis上でMySQLコンテナを起動します。」ではなく、「GitHub Actions上でMySQLコンテナを起動します。」に修正。  
+「GitHub Actionisではサービスコンテナという方法で」ではなく、「GitHub Actionsではサービスコンテナという方法で」に修正。  
+[@kdnakt](https://twitter.com/kdnakt)さんご指摘ありがとうございました（2022/08/15）
 
 **P244 SECTION-085 ユーザーログインエンドポイントの実装**
 「`LoginServiceインターフェースはauth/service.goに追記し，`」ではなく「`LoginServiceインターフェースはhandler/service.goに追記し，`」に修正。  

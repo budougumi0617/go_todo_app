@@ -78,21 +78,21 @@ mux.Post("/register", ru.ServeHTTP)
 という装飾に修正。
 
 # 第2刷（2022年8月19日発行）
-**P89 リスト9.1　無名関数は状態を持てる**
+**P89 リスト9.1　無名関数は状態を持てる**  
 `リスト9.1`ではなく、`リスト9.2`に修正。  
 [@YuyaAbo](https://github.com/YuyaAbo) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/22) ありがとうございました。
 
 
-**P112 リスト12.6　ログミドルウェアの実装例**
+**P112 リスト12.6　ログミドルウェアの実装例**  
 `WriteHeader`メソッド内の「`r.status = status`」を「`r.status = statusCode`」に修正。  
 [@litencatt](https://github.com/litencatt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/33) ありがとうございました（2022/08/15）
 
-**P148 テストとコードカバレッジ取得の自動実行**
+**P148 テストとコードカバレッジ取得の自動実行**  
 「GitHub Actiuons上で実行したテスト結果」ではなく、「GitHub Actions上で実行したテスト結果」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さんご指摘ありがとうございました（2022/08/06）
 
 
-**P163 リスト16.16　「httptest」パッケージを使った擬似的なHTTPリクエストのテスト**
+**P163 リスト16.16　「httptest」パッケージを使った擬似的なHTTPリクエストのテスト**  
 「`{"status": " ok"}`」ではなく、「`{"status": "ok"}`」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/29)ご指摘ありがとうございました（2022/08/10）
 
@@ -105,21 +105,21 @@ mux.Post("/register", ru.ServeHTTP)
 [@mizutec](https://twitter.com/mizutec)さん[ご指摘](https://twitter.com/mizutec/status/1555043156865208320)ありがとうございました（2022/08/06）  
 [@Mo3g4u](https://github.com/Mo3g4u)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/25)ありがとうございました（2022/08/06）
 
-**P173 リスト17.7　「handler/add_task.go」のタスクを追加する実装**
+**P173 リスト17.7　「handler/add_task.go」のタスクを追加する実装**  
 `}{ID: id}` ではなく、`}{ID: int(id)}`に修正。（2022/08/06）
 
-**P175 リスト17.8　ファイルを使った入出力の検証**
+**P175 リスト17.8　ファイルを使った入出力の検証**  
 `Tasks: map[int]*entity.Task{},` ではなく、`Tasks: map[entity.TaskID]*entity.Task{},`に修正。（2022/08/06）
 
-**P187 SECTION-072 MySQL実行環境の構築**
+**P187 SECTION-072 MySQL実行環境の構築**  
 「GitHub Actionis上でMySQLコンテナを起動します。」ではなく、「GitHub Actions上でMySQLコンテナを起動します。」に修正。  
 「GitHub Actionisではサービスコンテナという方法で」ではなく、「GitHub Actionsではサービスコンテナという方法で」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さんご指摘ありがとうございました（2022/08/15）
 
-**P244 SECTION-085 ユーザーログインエンドポイントの実装**
+**P244 SECTION-085 ユーザーログインエンドポイントの実装**  
 「`LoginServiceインターフェースはauth/service.goに追記し，`」ではなく「`LoginServiceインターフェースはhandler/service.goに追記し，`」に修正。  
 [@manaty226](https://github.com/manaty226)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/27)ご指摘ありがとうございました（2022/08/10）
 
-**P250 リスト20.32　「POST /login」エンドポイントを追加する**
+**P250 リスト20.32　「POST /login」エンドポイントを追加する**  
 「`JWTer: jwter,`」ではなく、「`TokenGenerator: jwter,`」に修正。  
 [@yskgc](https://github.com/yskgc)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/31)ご指摘ありがとうございました（2022/08/12）

@@ -116,6 +116,16 @@ mux.Post("/register", ru.ServeHTTP)
 「GitHub Actionisではサービスコンテナという方法で」ではなく、「GitHub Actionsではサービスコンテナという方法で」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さんご指摘ありがとうございました（2022/08/15）
 
+**P232 リスト20.13　「go:embed」ディレクティブの動作確認**  
+2回目の`t.Errorf`の引数は「`("want %s, but got %s", want, rawPubKey)`」ではなく、「`Errorf("want %s, but got %s", want, rawPrivKey)`」に修正。（2022/08/28）
+
+```go
+want = []byte("-----BEGIN PRIVATE KEY-----")
+if !bytes.Contains(rawPrivKey, want) {
+  t.Errorf("want %s, but got %s", want, rawPrivKey)
+}
+```
+
 **P244 SECTION-085 ユーザーログインエンドポイントの実装**  
 「`LoginServiceインターフェースはauth/service.goに追記し，`」ではなく「`LoginServiceインターフェースはhandler/service.goに追記し，`」に修正。  
 [@manaty226](https://github.com/manaty226)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/27)ご指摘ありがとうございました（2022/08/10）

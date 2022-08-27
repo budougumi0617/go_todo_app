@@ -28,7 +28,7 @@ func TestEmbed(t *testing.T) {
 	}
 	want = []byte("-----BEGIN PRIVATE KEY-----")
 	if !bytes.Contains(rawPrivKey, want) {
-		t.Errorf("want %s, but got %s", want, rawPubKey)
+		t.Errorf("want %s, but got %s", want, rawPrivKey)
 	}
 }
 

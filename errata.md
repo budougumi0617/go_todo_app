@@ -78,6 +78,20 @@ mux.Post("/register", ru.ServeHTTP)
 という装飾に修正。
 
 # 第2刷（2022年8月19日発行）
+**P77 リスト8.3　「errors.New」関数と「fmt.Errorf」関数**  
+「`return errors.New("GetAuthor: id is invalid")`」ではなく、「`return nil, errors.New("GetAuthor: id is invalid")`」に修正。  
+[@fuuukeee3](https://github.com/fuuukeee3) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/42) ありがとうございました（2022/09/02）
+
+
+**P77 リスト8.3　「errors.New」関数と「fmt.Errorf」関数**  
+「`return "", fmt.Errorf("GetAuthor: %v", err)`」ではなく、「`return "", fmt.Errorf("GetAuthorName: %v", err)`」に修正。  
+[@katutoshi](https://github.com/katutoshi) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/42) ありがとうございました（2022/09/02）
+
+**P77 リスト8.4 チェーンされた最終的なエラーの出力**  
+「`GetBookSummary: GetAuthorName: GetUser: id is invalid`」ではなく、「`GetBookSummary: GetAuthorName: GetAuthor: id is invalid`」に修正。  
+[@katutoshi](https://github.com/katutoshi) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/42) ありがとうございました（2022/09/02）
+
+
 **P89 リスト9.1　無名関数は状態を持てる**  
 `リスト9.1`ではなく、`リスト9.2`に修正。  
 [@YuyaAbo](https://github.com/YuyaAbo) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/22) ありがとうございました。
@@ -105,6 +119,15 @@ mux.Post("/register", ru.ServeHTTP)
 [@mizutec](https://twitter.com/mizutec)さん[ご指摘](https://twitter.com/mizutec/status/1555043156865208320)ありがとうございました（2022/08/06）  
 [@Mo3g4u](https://github.com/Mo3g4u)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/25)ありがとうございました（2022/08/06）
 
+
+**P173 リスト17.7　「handler/add_task.go」のタスクを追加する実装**  
+```go
+err := at.Validator.Struct(b)
+if err != nil {
+```
+ではなく、「`if err := at.Validator.Struct(b); err != nil {`」に修正。  
+[@kdnakt](https://twitter.com/kdnakt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/36)ご指摘ありがとうございました（2022/09/02）
+
 **P173 リスト17.7　「handler/add_task.go」のタスクを追加する実装**  
 `}{ID: id}` ではなく、`}{ID: int(id)}`に修正。（2022/08/06）
 
@@ -115,6 +138,17 @@ mux.Post("/register", ru.ServeHTTP)
 「GitHub Actionis上でMySQLコンテナを起動します。」ではなく、「GitHub Actions上でMySQLコンテナを起動します。」に修正。  
 「GitHub Actionisではサービスコンテナという方法で」ではなく、「GitHub Actionsではサービスコンテナという方法で」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さんご指摘ありがとうございました（2022/08/15）
+
+**P232 リスト20.13　「go:embed」ディレクティブの動作確認**  
+2回目の`t.Errorf`の引数は「`("want %s, but got %s", want, rawPubKey)`」ではなく、「`Errorf("want %s, but got %s", want, rawPrivKey)`」に修正。  
+[@kdnakt](https://twitter.com/kdnakt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/41)ご指摘ありがとうございました（2022/09/02）
+
+```go
+want = []byte("-----BEGIN PRIVATE KEY-----")
+if !bytes.Contains(rawPrivKey, want) {
+  t.Errorf("want %s, but got %s", want, rawPrivKey)
+}
+```
 
 **P244 SECTION-085 ユーザーログインエンドポイントの実装**  
 「`LoginServiceインターフェースはauth/service.goに追記し，`」ではなく「`LoginServiceインターフェースはhandler/service.goに追記し，`」に修正。  

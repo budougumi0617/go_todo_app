@@ -105,6 +105,15 @@ mux.Post("/register", ru.ServeHTTP)
 [@mizutec](https://twitter.com/mizutec)さん[ご指摘](https://twitter.com/mizutec/status/1555043156865208320)ありがとうございました（2022/08/06）  
 [@Mo3g4u](https://github.com/Mo3g4u)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/25)ありがとうございました（2022/08/06）
 
+
+**P173 リスト17.7　「handler/add_task.go」のタスクを追加する実装**  
+```go
+err := at.Validator.Struct(b)
+if err != nil {
+```
+ではなく、 `if err := at.Validator.Struct(b); err != nil {` に修正。  
+[@kdnakt](https://twitter.com/kdnakt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/36)ご指摘ありがとうございました（2022/09/02）
+
 **P173 リスト17.7　「handler/add_task.go」のタスクを追加する実装**  
 `}{ID: id}` ではなく、`}{ID: int(id)}`に修正。（2022/08/06）
 

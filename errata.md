@@ -101,9 +101,39 @@ mux.Post("/register", ru.ServeHTTP)
 `WriteHeader`メソッド内の「`r.status = status`」を「`r.status = statusCode`」に修正。  
 [@litencatt](https://github.com/litencatt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/33) ありがとうございました（2022/08/15）
 
+
 **P148 テストとコードカバレッジ取得の自動実行**  
 「GitHub Actiuons上で実行したテスト結果」ではなく、「GitHub Actions上で実行したテスト結果」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さんご指摘ありがとうございました（2022/08/06）
+
+**P148 テストとコードカバレッジ取得の自動実行**  
+「`.github/workflows/`ディレクトリ配下に`test.yml`を作成します。」ではなく、「`.github/workflows/`ディレクトリ配下に`test.yml`を作成します。また、ルートディレクトリに`.octocov.yml`を作成します」に修正。  
+`.octocov.yml`のファイル内容は次のとおりです。  
+https://github.com/budougumi0617/go_todo_app/blob/v1.0.4/.octocov.yml
+```yaml
+coverage:
+  paths:
+    - coverage.out
+codeToTestRatio:
+  code:
+    - '**/*.go'
+    - '!**/*_test.go'
+  test:
+    - '**/*_test.go'
+testExecutionTime:
+  if: true
+diff:
+  datastores:
+    - artifact://${GITHUB_REPOSITORY}
+comment:
+  if: is_pull_request
+report:
+  if: is_default_branch
+  datastores:
+    - artifact://${GITHUB_REPOSITORY}
+```
+
+[@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/43) ありがとうございました（2022/09/04）
 
 
 **P163 リスト16.16　「httptest」パッケージを使った擬似的なHTTPリクエストのテスト**  
@@ -134,6 +164,10 @@ if err != nil {
 **P175 リスト17.8　ファイルを使った入出力の検証**  
 `Tasks: map[int]*entity.Task{},` ではなく、`Tasks: map[entity.TaskID]*entity.Task{},`に修正。（2022/08/06）
 
+**P185 リスト18.4　MySQLコンテナの設定の追加前後を比較した「docker-compose.yml」の差分**  
+「`TODO_DB_DATABASE: todo`」ではなく、「`TODO_DB_NAME: todo`」に修正。  
+[@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/39) ありがとうございました（2022/09/04）
+
 **P187 SECTION-072 MySQL実行環境の構築**  
 「GitHub Actionis上でMySQLコンテナを起動します。」ではなく、「GitHub Actions上でMySQLコンテナを起動します。」に修正。  
 「GitHub Actionisではサービスコンテナという方法で」ではなく、「GitHub Actionsではサービスコンテナという方法で」に修正。  
@@ -150,6 +184,29 @@ if !bytes.Contains(rawPrivKey, want) {
 }
 ```
 
+**P233 リスト20.14　「JWTer」構造体と初期化関数の定義**  
+「`NewJWTer`」関数の実装を次のように修正。
+
+```go
+func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
+	j := &JWTer{Store: s}
+	privkey, err := parse(rawPrivKey)
+	if err != nil {
+		return nil, fmt.Errorf("failed in NewJWTer: private key: %w", err)
+	}
+	pubkey, err := parse(rawPubKey)
+	if err != nil {
+		return nil, fmt.Errorf("failed in NewJWTer: public key: %w", err)
+	}
+	j.PrivateKey = privkey
+	j.PublicKey = pubkey
+	j.Clocker = c
+	return j, nil
+}
+```
+
+[@kdnakt](https://twitter.com/kdnakt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/44)ご指摘ありがとうございました（2022/09/04）
+
 **P244 SECTION-085 ユーザーログインエンドポイントの実装**  
 「`LoginServiceインターフェースはauth/service.goに追記し，`」ではなく「`LoginServiceインターフェースはhandler/service.goに追記し，`」に修正。  
 [@manaty226](https://github.com/manaty226)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/27)ご指摘ありがとうございました（2022/08/10）
@@ -157,3 +214,11 @@ if !bytes.Contains(rawPrivKey, want) {
 **P250 リスト20.32　「POST /login」エンドポイントを追加する**  
 「`JWTer: jwter,`」ではなく、「`TokenGenerator: jwter,`」に修正。  
 [@yskgc](https://github.com/yskgc)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/31)ご指摘ありがとうございました（2022/08/12）
+
+**P250 リスト20.32　「POST /login」エンドポイントを追加する**  
+「`jwter, err := auth.NewJWTer(rcli)`」ではなく、「`jwter, err := auth.NewJWTer(rcli, clocker)`」に修正。  
+[@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/44) ありがとうございました（2022/09/04）
+
+**P262 「admin」ロールのユーザーのみがアクセス可能なエンドポイントを作成する**  
+「ミドルウェアの適用順序に気をつけながら実装したのがapply_adminです。」ではなく、「ミドルウェアの適用順序に気をつけながら実装したのがリスト20.47の実装です。リスト20.47では、アクセストークンから`http.Request`型の値に含まれる`context.Context`型の値にユーザーIDとロールを埋め込む`handler.AuthMiddleware`が実行されたあとに`handler.AdminMiddleware`が実行され順序でミドルウェアを適用しています。」に修正・追記。  
+[@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/45) ありがとうございました（2022/09/04）

@@ -220,5 +220,5 @@ func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
 [@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/44) ありがとうございました（2022/09/04）
 
 **P262 「admin」ロールのユーザーのみがアクセス可能なエンドポイントを作成する**  
-
+「ミドルウェアの適用順序に気をつけながら実装したのがapply_adminです。」ではなく、「ミドルウェアの適用順序に気をつけながら実装したのがリスト20.47の実装です。リスト20.47では、アクセストークンから`http.Request`型の値に含まれる`context.Context`型の値にユーザーIDとロールを埋め込む`handler.AuthMiddleware`が実行されたあとに`handler.AdminMiddleware`が実行され順序でミドルウェアを適用しています。」に修正・追記。  
 [@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/45) ありがとうございました（2022/09/04）

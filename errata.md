@@ -184,6 +184,29 @@ if !bytes.Contains(rawPrivKey, want) {
 }
 ```
 
+**P233 リスト20.14　「JWTer」構造体と初期化関数の定義**  
+「`NewJWTer`」関数の実装を次のように修正。
+
+```go
+func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
+	j := &JWTer{Store: s}
+	privkey, err := parse(rawPrivKey)
+	if err != nil {
+		return nil, fmt.Errorf("failed in NewJWTer: private key: %w", err)
+	}
+	pubkey, err := parse(rawPubKey)
+	if err != nil {
+		return nil, fmt.Errorf("failed in NewJWTer: public key: %w", err)
+	}
+	j.PrivateKey = privkey
+	j.PublicKey = pubkey
+	j.Clocker = c
+	return j, nil
+}
+```
+
+[@kdnakt](https://twitter.com/kdnakt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/44)ご指摘ありがとうございました（2022/09/04）
+
 **P244 SECTION-085 ユーザーログインエンドポイントの実装**  
 「`LoginServiceインターフェースはauth/service.goに追記し，`」ではなく「`LoginServiceインターフェースはhandler/service.goに追記し，`」に修正。  
 [@manaty226](https://github.com/manaty226)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/27)ご指摘ありがとうございました（2022/08/10）
@@ -191,3 +214,11 @@ if !bytes.Contains(rawPrivKey, want) {
 **P250 リスト20.32　「POST /login」エンドポイントを追加する**  
 「`JWTer: jwter,`」ではなく、「`TokenGenerator: jwter,`」に修正。  
 [@yskgc](https://github.com/yskgc)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/31)ご指摘ありがとうございました（2022/08/12）
+
+**P250 リスト20.32　「POST /login」エンドポイントを追加する**  
+「`jwter, err := auth.NewJWTer(rcli)`」ではなく、「`jwter, err := auth.NewJWTer(rcli, clocker)`」に修正。  
+[@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/44) ありがとうございました（2022/09/04）
+
+**P262 「admin」ロールのユーザーのみがアクセス可能なエンドポイントを作成する**  
+
+[@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/45) ありがとうございました（2022/09/04）

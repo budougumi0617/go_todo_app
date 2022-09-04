@@ -106,7 +106,7 @@ mux.Post("/register", ru.ServeHTTP)
 「GitHub Actiuons上で実行したテスト結果」ではなく、「GitHub Actions上で実行したテスト結果」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さんご指摘ありがとうございました（2022/08/06）
 
-
+**P148 テストとコードカバレッジ取得の自動実行**  
 「`.github/workflows/`ディレクトリ配下に`test.yml`を作成します。」ではなく、「`.github/workflows/`ディレクトリ配下に`test.yml`を作成します。また、ルートディレクトリに`.octocov.yml`を作成します」に修正。  
 `.octocov.yml`のファイル内容は次のとおりです。  
 https://github.com/budougumi0617/go_todo_app/blob/v1.0.4/.octocov.yml
@@ -163,6 +163,10 @@ if err != nil {
 
 **P175 リスト17.8　ファイルを使った入出力の検証**  
 `Tasks: map[int]*entity.Task{},` ではなく、`Tasks: map[entity.TaskID]*entity.Task{},`に修正。（2022/08/06）
+
+**P185 リスト18.4　MySQLコンテナの設定の追加前後を比較した「docker-compose.yml」の差分**  
+「`TODO_DB_DATABASE: todo`」ではなく、「`TODO_DB_NAME: todo`」に修正。  
+[@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/39) ありがとうございました（2022/09/04）
 
 **P187 SECTION-072 MySQL実行環境の構築**  
 「GitHub Actionis上でMySQLコンテナを起動します。」ではなく、「GitHub Actions上でMySQLコンテナを起動します。」に修正。  

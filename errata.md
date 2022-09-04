@@ -101,9 +101,39 @@ mux.Post("/register", ru.ServeHTTP)
 `WriteHeader`メソッド内の「`r.status = status`」を「`r.status = statusCode`」に修正。  
 [@litencatt](https://github.com/litencatt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/33) ありがとうございました（2022/08/15）
 
+
 **P148 テストとコードカバレッジ取得の自動実行**  
 「GitHub Actiuons上で実行したテスト結果」ではなく、「GitHub Actions上で実行したテスト結果」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さんご指摘ありがとうございました（2022/08/06）
+
+
+「`.github/workflows/`ディレクトリ配下に`test.yml`を作成します。」ではなく、「`.github/workflows/`ディレクトリ配下に`test.yml`を作成します。また、ルートディレクトリに`.octocov.yml`を作成します」に修正。  
+`.octocov.yml`のファイル内容は次のとおりです。  
+https://github.com/budougumi0617/go_todo_app/blob/v1.0.4/.octocov.yml
+```yaml
+coverage:
+  paths:
+    - coverage.out
+codeToTestRatio:
+  code:
+    - '**/*.go'
+    - '!**/*_test.go'
+  test:
+    - '**/*_test.go'
+testExecutionTime:
+  if: true
+diff:
+  datastores:
+    - artifact://${GITHUB_REPOSITORY}
+comment:
+  if: is_pull_request
+report:
+  if: is_default_branch
+  datastores:
+    - artifact://${GITHUB_REPOSITORY}
+```
+
+[@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/43) ありがとうございました（2022/09/04）
 
 
 **P163 リスト16.16　「httptest」パッケージを使った擬似的なHTTPリクエストのテスト**  

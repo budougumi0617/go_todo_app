@@ -186,6 +186,10 @@ if err != nil {
 「`t.Fatalf("unexected error: %v", err)`」ではなく、「`t.Fatalf("unexpected error: %v", err)`」に修正。  
 [@youta32449999](https://github.com/youta32449999)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/54) ありがとうございました（2022/09/15）
 
+**P216 「service」パッケージの実装**  
+「`store` パッケージを利用して実際の登録データを組み立てる処理がリスト19.21の実装です。」の後に「リスト19.21中で利用する`UserRegister`インターフェースの定義はサンプルコードリポジトリの`service/interface.go`を参考にご用意ください。」  
+[@youta32449999](https://github.com/youta32449999)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/55) ありがとうございました（2022/09/15）
+
 **P232 リスト20.13　「go:embed」ディレクティブの動作確認**  
 2回目の`t.Errorf`の引数は「`("want %s, but got %s", want, rawPubKey)`」ではなく、「`Errorf("want %s, but got %s", want, rawPrivKey)`」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/41)ご指摘ありがとうございました（2022/09/02）

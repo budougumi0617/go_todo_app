@@ -92,7 +92,7 @@ func TestRepository_ListTasks(t *testing.T) {
 	sut := &Repository{}
 	gots, err := sut.ListTasks(ctx, tx, wantUserID)
 	if err != nil {
-		t.Fatalf("unexected error: %v", err)
+		t.Fatalf("unexpected error: %v", err)
 	}
 	if d := cmp.Diff(gots, wants); len(d) != 0 {
 		t.Errorf("differs: (-got +want)\n%s", d)

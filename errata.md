@@ -236,8 +236,8 @@ func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
 「`// handler/testdata/login/bad_req_rsp.json.golden`」ではなく、「`// handler/testdata/login/bad_rsp.json.golden`」に修正。  
 [@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/51) ありがとうございました（2022/09/15）
 
-**P247 本文**  
-「`なお、handler/testdata/login/bad_req_rsp.json.goldenファイルの中身のエラーを見ると`」ではなく、「`なお、handler/testdata/login/bad_rsp.json.goldenファイルの中身のエラーを見ると`」に修正。
+**P247 「handler.Login」型に対するテストコードの実装**  
+「`なお、handler/testdata/login/bad_req_rsp.json.goldenファイルの中身のエラーを見ると`」ではなく、「`なお、handler/testdata/login/bad_rsp.json.goldenファイルの中身のエラーを見ると`」に修正。  
 [@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/51) ありがとうございました（2022/09/15）
 
 **P250 リスト20.32　「POST /login」エンドポイントを追加する**  

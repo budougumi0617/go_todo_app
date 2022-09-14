@@ -164,6 +164,15 @@ if err != nil {
 **P175 リスト17.8　ファイルを使った入出力の検証**  
 `Tasks: map[int]*entity.Task{},` ではなく、`Tasks: map[entity.TaskID]*entity.Task{},`に修正。（2022/08/06）
 
+**P175 リスト17.8　ファイルを使った入出力の検証**  
+「`rspFile: "testdata/add_task/bad_req_rsp.json.golden",`」ではなく、「`rspFile: "testdata/add_task/bad_rsp.json.golden",`」に修正。  
+[@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/51) ありがとうございました（2022/09/15）
+
+**P176 リスト17.9　ゴールデンテストで利用しているJSONファイルの中身**  
+「`// handler/testdata/add_task/bad_req_rsp.json.goldenの中身`」ではなく、「`// handler/testdata/add_task/bad_rsp.json.goldenの中身`」に修正。  
+[@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/51) ありがとうございました（2022/09/15）
+
+
 **P185 リスト18.4　MySQLコンテナの設定の追加前後を比較した「docker-compose.yml」の差分**  
 「`TODO_DB_DATABASE: todo`」ではなく、「`TODO_DB_NAME: todo`」に修正。  
 [@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/39) ありがとうございました（2022/09/04）
@@ -210,6 +219,18 @@ func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
 **P244 SECTION-085 ユーザーログインエンドポイントの実装**  
 「`LoginServiceインターフェースはauth/service.goに追記し，`」ではなく「`LoginServiceインターフェースはhandler/service.goに追記し，`」に修正。  
 [@manaty226](https://github.com/manaty226)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/27)ご指摘ありがとうございました（2022/08/10）
+
+**P245 リスト20.26　「*handler.Login.ServeHTTP」メソッドに対する実装**  
+「`rspFile: "testdata/login/bad_req_rsp.json.golden",`」ではなく、「`rspFile: "testdata/login/bad_rsp.json.golden",`」に修正。  
+[@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/51) ありがとうございました（2022/09/15）
+
+**P247 リスト20.27　「TestLogin_ServeHTTP」関数で利用しているJSONファイル**  
+「`// handler/testdata/login/bad_req_rsp.json.golden`」ではなく、「`// handler/testdata/login/bad_rsp.json.golden`」に修正。  
+[@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/51) ありがとうございました（2022/09/15）
+
+**P247 本文**  
+「`なお、handler/testdata/login/bad_req_rsp.json.goldenファイルの中身のエラーを見ると`」ではなく、「`なお、handler/testdata/login/bad_rsp.json.goldenファイルの中身のエラーを見ると`」に修正。
+[@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/51) ありがとうございました（2022/09/15）
 
 **P250 リスト20.32　「POST /login」エンドポイントを追加する**  
 「`JWTer: jwter,`」ではなく、「`TokenGenerator: jwter,`」に修正。  

@@ -40,7 +40,7 @@ func TestLogin_ServeHTTP(t *testing.T) {
 			reqFile: "testdata/login/bad_req.json.golden",
 			want: want{
 				status:  http.StatusBadRequest,
-				rspFile: "testdata/login/bad_req_rsp.json.golden",
+				rspFile: "testdata/login/bad_rsp.json.golden",
 			},
 		},
 		"internal_server_error": {

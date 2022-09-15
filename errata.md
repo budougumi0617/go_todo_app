@@ -244,6 +244,10 @@ func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
 「`なお、handler/testdata/login/bad_req_rsp.json.goldenファイルの中身のエラーを見ると`」ではなく、「`なお、handler/testdata/login/bad_rsp.json.goldenファイルの中身のエラーを見ると`」に修正。  
 [@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/51) ありがとうございました（2022/09/15）
 
+**P248 リスト20.28　ログイン情報の検証とアクセストークンの生成を行う**  
+「`if err := u.ComparePassword(pw); err != nil {`」ではなく、「`if err := u.ComparePassword(pw); err != nil {`」に修正。  
+[@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/59) ありがとうございました（2022/09/15）
+
 **P250 リスト20.32　「POST /login」エンドポイントを追加する**  
 「`JWTer: jwter,`」ではなく、「`TokenGenerator: jwter,`」に修正。  
 [@yskgc](https://github.com/yskgc)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/31)ご指摘ありがとうございました（2022/08/12）

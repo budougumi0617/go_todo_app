@@ -18,7 +18,7 @@ func (l *Login) Login(ctx context.Context, name, pw string) (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("failed to list: %w", err)
 	}
-	if err = u.ComparePassword(pw); err != nil {
+	if err := u.ComparePassword(pw); err != nil {
 		return "", fmt.Errorf("wrong password: %w", err)
 	}
 	jwt, err := l.TokenGenerator.GenerateToken(ctx, *u)

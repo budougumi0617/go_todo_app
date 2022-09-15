@@ -228,6 +228,10 @@ func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
 「`LoginServiceインターフェースはauth/service.goに追記し，`」ではなく「`LoginServiceインターフェースはhandler/service.goに追記し，`」に修正。  
 [@manaty226](https://github.com/manaty226)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/27)ご指摘ありがとうございました（2022/08/10）
 
+**P244 リスト20.24　ログインを受け付けるハンドラーの実装**  
+「`RespondJSON(r.Context(), w, rsp, http.StatusOK)`」ではなく「`RespondJSON(ctx, w, rsp, http.StatusOK)`」に修正。  
+[@youta32449999](https://github.com/youta32449999)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/57) ありがとうございました（2022/09/16）
+
 **P245 リスト20.26　「*handler.Login.ServeHTTP」メソッドに対する実装**  
 「`rspFile: "testdata/login/bad_req_rsp.json.golden",`」ではなく、「`rspFile: "testdata/login/bad_rsp.json.golden",`」に修正。  
 [@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/51) ありがとうございました（2022/09/15）

@@ -164,6 +164,15 @@ if err != nil {
 **P175 リスト17.8　ファイルを使った入出力の検証**  
 `Tasks: map[int]*entity.Task{},` ではなく、`Tasks: map[entity.TaskID]*entity.Task{},`に修正。（2022/08/06）
 
+**P175 リスト17.8　ファイルを使った入出力の検証**  
+「`rspFile: "testdata/add_task/bad_req_rsp.json.golden",`」ではなく、「`rspFile: "testdata/add_task/bad_rsp.json.golden",`」に修正。  
+[@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/51) ありがとうございました（2022/09/15）
+
+**P176 リスト17.9　ゴールデンテストで利用しているJSONファイルの中身**  
+「`// handler/testdata/add_task/bad_req_rsp.json.goldenの中身`」ではなく、「`// handler/testdata/add_task/bad_rsp.json.goldenの中身`」に修正。  
+[@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/51) ありがとうございました（2022/09/15）
+
+
 **P185 リスト18.4　MySQLコンテナの設定の追加前後を比較した「docker-compose.yml」の差分**  
 「`TODO_DB_DATABASE: todo`」ではなく、「`TODO_DB_NAME: todo`」に修正。  
 [@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/39) ありがとうございました（2022/09/04）
@@ -172,6 +181,14 @@ if err != nil {
 「GitHub Actionis上でMySQLコンテナを起動します。」ではなく、「GitHub Actions上でMySQLコンテナを起動します。」に修正。  
 「GitHub Actionisではサービスコンテナという方法で」ではなく、「GitHub Actionsではサービスコンテナという方法で」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さんご指摘ありがとうございました（2022/08/15）
+
+**P198 リスト18.19　「ListTasks」メソッドが期待されるデータを取得できるか検証**  
+「`t.Fatalf("unexected error: %v", err)`」ではなく、「`t.Fatalf("unexpected error: %v", err)`」に修正。  
+[@youta32449999](https://github.com/youta32449999)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/54) ありがとうございました（2022/09/15）
+
+**P216 「service」パッケージの実装**  
+「`store` パッケージを利用して実際の登録データを組み立てる処理がリスト19.21の実装です。」の後に「リスト19.21中で利用する`UserRegister`インターフェースの定義はサンプルコードリポジトリの[`_chapter19/section79/service/interface.go`](https://github.com/budougumi0617/go_todo_app/blob/main/_chapter19/section79/service/interface.go)を参考にご用意ください。」  
+[@youta32449999](https://github.com/youta32449999)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/55) ありがとうございました（2022/09/15）
 
 **P232 リスト20.13　「go:embed」ディレクティブの動作確認**  
 2回目の`t.Errorf`の引数は「`("want %s, but got %s", want, rawPubKey)`」ではなく、「`Errorf("want %s, but got %s", want, rawPrivKey)`」に修正。  
@@ -210,6 +227,26 @@ func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
 **P244 SECTION-085 ユーザーログインエンドポイントの実装**  
 「`LoginServiceインターフェースはauth/service.goに追記し，`」ではなく「`LoginServiceインターフェースはhandler/service.goに追記し，`」に修正。  
 [@manaty226](https://github.com/manaty226)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/27)ご指摘ありがとうございました（2022/08/10）
+
+**P244 リスト20.24　ログインを受け付けるハンドラーの実装**  
+「`RespondJSON(r.Context(), w, rsp, http.StatusOK)`」ではなく「`RespondJSON(ctx, w, rsp, http.StatusOK)`」に修正。  
+[@youta32449999](https://github.com/youta32449999)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/57) ありがとうございました（2022/09/16）
+
+**P245 リスト20.26　「*handler.Login.ServeHTTP」メソッドに対する実装**  
+「`rspFile: "testdata/login/bad_req_rsp.json.golden",`」ではなく、「`rspFile: "testdata/login/bad_rsp.json.golden",`」に修正。  
+[@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/51) ありがとうございました（2022/09/15）
+
+**P247 リスト20.27　「TestLogin_ServeHTTP」関数で利用しているJSONファイル**  
+「`// handler/testdata/login/bad_req_rsp.json.golden`」ではなく、「`// handler/testdata/login/bad_rsp.json.golden`」に修正。  
+[@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/51) ありがとうございました（2022/09/15）
+
+**P247 「handler.Login」型に対するテストコードの実装**  
+「`なお、handler/testdata/login/bad_req_rsp.json.goldenファイルの中身のエラーを見ると`」ではなく、「`なお、handler/testdata/login/bad_rsp.json.goldenファイルの中身のエラーを見ると`」に修正。  
+[@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/51) ありがとうございました（2022/09/15）
+
+**P248 リスト20.28　ログイン情報の検証とアクセストークンの生成を行う**  
+「`if err = u.ComparePassword(pw); err != nil {`」ではなく、「`if err := u.ComparePassword(pw); err != nil {`」に修正。  
+[@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/59) ありがとうございました（2022/09/15）
 
 **P250 リスト20.32　「POST /login」エンドポイントを追加する**  
 「`JWTer: jwter,`」ではなく、「`TokenGenerator: jwter,`」に修正。  

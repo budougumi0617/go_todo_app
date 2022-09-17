@@ -44,5 +44,5 @@ func (l *Login) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		AccessToken: jwt,
 	}
 
-	RespondJSON(r.Context(), w, rsp, http.StatusOK)
+	RespondJSON(ctx, w, rsp, http.StatusOK)
 }

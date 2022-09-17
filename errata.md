@@ -187,7 +187,7 @@ if err != nil {
 [@youta32449999](https://github.com/youta32449999)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/54) ありがとうございました（2022/09/15）
 
 **P216 「service」パッケージの実装**  
-「`store` パッケージを利用して実際の登録データを組み立てる処理がリスト19.21の実装です。」の後に「リスト19.21中で利用する`UserRegister`インターフェースの定義はサンプルコードリポジトリの`service/interface.go`を参考にご用意ください。」  
+「`store` パッケージを利用して実際の登録データを組み立てる処理がリスト19.21の実装です。」の後に「リスト19.21中で利用する`UserRegister`インターフェースの定義はサンプルコードリポジトリの[`_chapter19/section79/service/interface.go`](https://github.com/budougumi0617/go_todo_app/blob/main/_chapter19/section79/service/interface.go)を参考にご用意ください。」  
 [@youta32449999](https://github.com/youta32449999)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/55) ありがとうございました（2022/09/15）
 
 **P232 リスト20.13　「go:embed」ディレクティブの動作確認**  
@@ -245,7 +245,7 @@ func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
 [@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/51) ありがとうございました（2022/09/15）
 
 **P248 リスト20.28　ログイン情報の検証とアクセストークンの生成を行う**  
-「`if err := u.ComparePassword(pw); err != nil {`」ではなく、「`if err := u.ComparePassword(pw); err != nil {`」に修正。  
+「`if err = u.ComparePassword(pw); err != nil {`」ではなく、「`if err := u.ComparePassword(pw); err != nil {`」に修正。  
 [@fuuukeee3](https://github.com/fuuukeee3)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/59) ありがとうございました（2022/09/15）
 
 **P250 リスト20.32　「POST /login」エンドポイントを追加する**  

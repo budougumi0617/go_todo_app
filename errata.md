@@ -87,10 +87,22 @@ mux.Post("/register", ru.ServeHTTP)
 「`return "", fmt.Errorf("GetAuthor: %v", err)`」ではなく、「`return "", fmt.Errorf("GetAuthorName: %v", err)`」に修正。  
 [@katutoshi](https://github.com/katutoshi) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/42) ありがとうございました（2022/09/02）
 
+**P77 SECTION-033 エラーについて**  
+「`Goではこのようチェーンして`」ではなく、「`Goではこのようにチェーンして`」に修正。  
+[WomenWhoGoTokyo](https://github.com/WomenWhoGoTokyo/book-reading-party)のみなさんご指摘ありがとうございました（2022/10/02）
+
 **P77 リスト8.4 チェーンされた最終的なエラーの出力**  
 「`GetBookSummary: GetAuthorName: GetUser: id is invalid`」ではなく、「`GetBookSummary: GetAuthorName: GetAuthor: id is invalid`」に修正。  
 [@katutoshi](https://github.com/katutoshi) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/42) ありがとうございました（2022/09/02）
 
+**P78 リスト8.5　「sql.ErrNoRows」と比較しても真になることはない**  
+**P79 リスト8.6　Go 1.13からのエラーラッピング**  
+「`func (r *Repo) GetBook(t BookTitle))(*Book, error) {`」ではなく、「`func (r *Repo) GetBook(t BookTitle)(*Book, error) {`」に修正。  
+[WomenWhoGoTokyo](https://github.com/WomenWhoGoTokyo/book-reading-party)のみなさんご指摘ありがとうございました（2022/10/02）
+
+**P81 リスト8.9　「errors.As」関数を使ってRDBMSのエラー情報を得る**  
+「`return fmt.Errorf("store: cannot save book_id %d: %w", ErrAlreadyExists)`」ではなく、「`return fmt.Errorf("store: cannot save book_id %d: %w", book.ID, ErrAlreadyExists)`」に修正。  
+[WomenWhoGoTokyo](https://github.com/WomenWhoGoTokyo/book-reading-party)のみなさんご指摘ありがとうございました（2022/10/02）
 
 **P89 リスト9.1　無名関数は状態を持てる**  
 `リスト9.1`ではなく、`リスト9.2`に修正。  
@@ -140,6 +152,10 @@ report:
 「`{"status": " ok"}`」ではなく、「`{"status": "ok"}`」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/29)ご指摘ありがとうございました（2022/08/10）
 
+**P169 リスト17.4　HTTPハンドラー中で面倒なJSONレスポンス作成を簡略化**  
+`import`文中の「`"log"`」を削除  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/61) ありがとうございました（2022/10/02）
+
 **P167 リスト17.3　「store/store.go」に実装したタスクの簡易管理方法**  
 `Tasks`変数は`&TaskStore{Tasks: map[int]*entity.Task{}}`ではなく、`&TaskStore{Tasks: map[entity.TaskID]*entity.Task{}}`に修正。  
 `TaskStore`構造体の`LastID`プロパティは`int`ではなく、`entity.TaskID`に修正。  
@@ -149,6 +165,10 @@ report:
 [@mizutec](https://twitter.com/mizutec)さん[ご指摘](https://twitter.com/mizutec/status/1555043156865208320)ありがとうございました（2022/08/06）  
 [@Mo3g4u](https://github.com/Mo3g4u)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/25)ありがとうございました（2022/08/06）
 
+
+**P172 SECTION-067タスクを登録するエンドポイントの実装**  
+「リクエストの処理が正常が完了する場合」ではなく、「リクエストの処理が正常に完了する場合」に修正。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/66) ありがとうございました（2022/10/02）
 
 **P173 リスト17.7　「handler/add_task.go」のタスクを追加する実装**  
 ```go
@@ -177,6 +197,16 @@ if err != nil {
 「`TODO_DB_DATABASE: todo`」ではなく、「`TODO_DB_NAME: todo`」に修正。  
 [@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/39) ありがとうございました（2022/09/04）
 
+**P186 ローカルマシン上のMySQLコンテナにマイグレーションを実施する**  
+「`make migrate コマンドを実行してマイグレーションを行います。`」という1文に下記の脚注リンクを追加。  
+https://github.com/budougumi0617/go_todo_app/blob/v1.0.7/Makefile  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/62) ありがとうございました（2022/10/02）
+
+**P187 ローカルマシン上のMySQLコンテナにマイグレーションを実施する**  
+「`コメントを変更するなどしてから make drymigrateコマンドを実行するとマイグレーション用のDDLが生成される様子がわかります。`」という1文に下記の脚注リンクを追加。  
+https://github.com/budougumi0617/go_todo_app/blob/v1.0.7/Makefile  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/62) ありがとうございました（2022/10/02）
+
 **P187 SECTION-072 MySQL実行環境の構築**  
 「GitHub Actionis上でMySQLコンテナを起動します。」ではなく、「GitHub Actions上でMySQLコンテナを起動します。」に修正。  
 「GitHub Actionisではサービスコンテナという方法で」ではなく、「GitHub Actionsではサービスコンテナという方法で」に修正。  
@@ -186,9 +216,21 @@ if err != nil {
 「`t.Fatalf("unexected error: %v", err)`」ではなく、「`t.Fatalf("unexpected error: %v", err)`」に修正。  
 [@youta32449999](https://github.com/youta32449999)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/54) ありがとうございました（2022/09/15）
 
+**P200 リスト18.22　「github.com/DATA-DOG/go-sqlmock」を使ったRDBMSを用いないテスト**  
+「`t.Cleanup(func() {  db.Close() })`」ではなく、「`t.Cleanup(func() { _ = db.Close() })`」に修正。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/64) ありがとうございました（2022/10/02）
+
 **P216 「service」パッケージの実装**  
 「`store` パッケージを利用して実際の登録データを組み立てる処理がリスト19.21の実装です。」の後に「リスト19.21中で利用する`UserRegister`インターフェースの定義はサンプルコードリポジトリの[`_chapter19/section79/service/interface.go`](https://github.com/budougumi0617/go_todo_app/blob/main/_chapter19/section79/service/interface.go)を参考にご用意ください。」  
 [@youta32449999](https://github.com/youta32449999)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/55) ありがとうございました（2022/09/15）
+
+**P218 リスト19.23　「store/repository.go」ファイルに定義する汎用エラー定義**  
+「`// ErrCodeMySQLDuplicateEntry はMySQL系ののDUPLICATEエラーコード`」ではなく、「`// ErrCodeMySQLDuplicateEntry はMySQL系のDUPLICATEエラーコード`」に修正。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/66) ありがとうございました（2022/10/02）
+
+**P226 「KVS」型に対するテストを実装する**  
+「Redisの接続情をの差分を吸収するため」ではなく、「Redisの接続情の差分を吸収するため」に修正。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/66) ありがとうございました（2022/10/02）
 
 **P232 リスト20.13　「go:embed」ディレクティブの動作確認**  
 2回目の`t.Errorf`の引数は「`("want %s, but got %s", want, rawPubKey)`」ではなく、「`Errorf("want %s, but got %s", want, rawPrivKey)`」に修正。  
@@ -224,6 +266,10 @@ func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
 
 [@kdnakt](https://twitter.com/kdnakt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/44)ご指摘ありがとうございました（2022/09/04）
 
+**P236 フィクスチャ関数の実装**  
+「OSSを利用してしてダミーデータを生成」ではなく、「OSSを利用してダミーデータを生成」に修正。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/66) ありがとうございました（2022/10/02）
+
 **P244 SECTION-085 ユーザーログインエンドポイントの実装**  
 「`LoginServiceインターフェースはauth/service.goに追記し，`」ではなく「`LoginServiceインターフェースはhandler/service.goに追記し，`」に修正。  
 [@manaty226](https://github.com/manaty226)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/27)ご指摘ありがとうございました（2022/08/10）
@@ -255,6 +301,18 @@ func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
 **P250 リスト20.32　「POST /login」エンドポイントを追加する**  
 「`jwter, err := auth.NewJWTer(rcli)`」ではなく、「`jwter, err := auth.NewJWTer(rcli, clocker)`」に修正。  
 [@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/44) ありがとうございました（2022/09/04）
+
+**P236 「POST /tasks」でタスクを追加するときはユーザー情報をタスクに残す**  
+「アクセストークンからユーザーIDをできるようになったので、」ではなく、「アクセストークンからユーザーIDを取得できるようになったので、」に修正。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/66) ありがとうございました（2022/10/02）
+
+**P258 リスト20.42　「user_id」カラムへ対応した「*store.Repository.AddTask」メソッド**  
+ページ脚注に「リスト20.42の変更に対応するテストコードの修正は https://github.com/budougumi0617/go_todo_app/blob/v1.0.7/store/task_test.go を参照のこと」を追記。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/67) ありがとうございました（2022/10/02）
+
+**P259 リスト20.44　ユーザーIDを使ってタスクを検索する**  
+ページ脚注に「リスト20.44の変更に対応する`TaskLister`の修正は https://github.com/budougumi0617/go_todo_app/blob/v1.0.7/service/interface.go を参照のこと」を追記。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/67) ありがとうございました（2022/10/02）
 
 **P262 「admin」ロールのユーザーのみがアクセス可能なエンドポイントを作成する**  
 「ミドルウェアの適用順序に気をつけながら実装したのがapply_adminです。」ではなく、「ミドルウェアの適用順序に気をつけながら実装したのがリスト20.47の実装です。リスト20.47では、アクセストークンから取得したユーザーIDとロールを`http.Request`型の値に含まれる`context.Context`型の値に埋め込む`handler.AuthMiddleware`を実行したあとに、`handler.AdminMiddleware`を実行する順序でミドルウェアを適用しています。」に修正・追記。  

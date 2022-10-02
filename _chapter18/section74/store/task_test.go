@@ -95,7 +95,7 @@ func TestRepository_AddTask(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { db.Close() })
+	t.Cleanup(func() { _ = db.Close() })
 	mock.ExpectExec(
 		// エスケープが必要
 		`INSERT INTO task \(title, status, created, modified\) VALUES \(\?, \?, \?, \?\)`,

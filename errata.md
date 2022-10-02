@@ -152,6 +152,10 @@ report:
 「`{"status": " ok"}`」ではなく、「`{"status": "ok"}`」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/29)ご指摘ありがとうございました（2022/08/10）
 
+**P169 リスト17.4　HTTPハンドラー中で面倒なJSONレスポンス作成を簡略化**  
+`import`文中の「`"log"`」を削除  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/61) ありがとうございました（2022/10/02）
+
 **P167 リスト17.3　「store/store.go」に実装したタスクの簡易管理方法**  
 `Tasks`変数は`&TaskStore{Tasks: map[int]*entity.Task{}}`ではなく、`&TaskStore{Tasks: map[entity.TaskID]*entity.Task{}}`に修正。  
 `TaskStore`構造体の`LastID`プロパティは`int`ではなく、`entity.TaskID`に修正。  

@@ -162,6 +162,10 @@ report:
 [@Mo3g4u](https://github.com/Mo3g4u)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/25)ありがとうございました（2022/08/06）
 
 
+**P172 SECTION-067タスクを登録するエンドポイントの実装**  
+「リクエストの処理が正常が完了する場合」ではなく、「リクエストの処理が正常に完了する場合」に修正。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/66) ありがとうございました（2022/10/02）
+
 **P173 リスト17.7　「handler/add_task.go」のタスクを追加する実装**  
 ```go
 err := at.Validator.Struct(b)
@@ -216,6 +220,14 @@ https://github.com/budougumi0617/go_todo_app/blob/v1.0.7/Makefile
 「`store` パッケージを利用して実際の登録データを組み立てる処理がリスト19.21の実装です。」の後に「リスト19.21中で利用する`UserRegister`インターフェースの定義はサンプルコードリポジトリの[`_chapter19/section79/service/interface.go`](https://github.com/budougumi0617/go_todo_app/blob/main/_chapter19/section79/service/interface.go)を参考にご用意ください。」  
 [@youta32449999](https://github.com/youta32449999)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/55) ありがとうございました（2022/09/15）
 
+**P218 リスト19.23　「store/repository.go」ファイルに定義する汎用エラー定義**  
+「`// ErrCodeMySQLDuplicateEntry はMySQL系ののDUPLICATEエラーコード`」ではなく、「`// ErrCodeMySQLDuplicateEntry はMySQL系のDUPLICATEエラーコード`」に修正。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/66) ありがとうございました（2022/10/02）
+
+**P226 「KVS」型に対するテストを実装する**  
+「Redisの接続情をの差分を吸収するため」ではなく、「Redisの接続情の差分を吸収するため」に修正。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/66) ありがとうございました（2022/10/02）
+
 **P232 リスト20.13　「go:embed」ディレクティブの動作確認**  
 2回目の`t.Errorf`の引数は「`("want %s, but got %s", want, rawPubKey)`」ではなく、「`Errorf("want %s, but got %s", want, rawPrivKey)`」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/41)ご指摘ありがとうございました（2022/09/02）
@@ -250,6 +262,10 @@ func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
 
 [@kdnakt](https://twitter.com/kdnakt)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/44)ご指摘ありがとうございました（2022/09/04）
 
+**P236 フィクスチャ関数の実装**  
+「OSSを利用してしてダミーデータを生成」ではなく、「OSSを利用してダミーデータを生成」に修正。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/66) ありがとうございました（2022/10/02）
+
 **P244 SECTION-085 ユーザーログインエンドポイントの実装**  
 「`LoginServiceインターフェースはauth/service.goに追記し，`」ではなく「`LoginServiceインターフェースはhandler/service.goに追記し，`」に修正。  
 [@manaty226](https://github.com/manaty226)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/27)ご指摘ありがとうございました（2022/08/10）
@@ -281,6 +297,10 @@ func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
 **P250 リスト20.32　「POST /login」エンドポイントを追加する**  
 「`jwter, err := auth.NewJWTer(rcli)`」ではなく、「`jwter, err := auth.NewJWTer(rcli, clocker)`」に修正。  
 [@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/44) ありがとうございました（2022/09/04）
+
+**P236 「POST /tasks」でタスクを追加するときはユーザー情報をタスクに残す**  
+「アクセストークンからユーザーIDをできるようになったので、」ではなく、「アクセストークンからユーザーIDを取得できるようになったので、」に修正。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/66) ありがとうございました（2022/10/02）
 
 **P262 「admin」ロールのユーザーのみがアクセス可能なエンドポイントを作成する**  
 「ミドルウェアの適用順序に気をつけながら実装したのがapply_adminです。」ではなく、「ミドルウェアの適用順序に気をつけながら実装したのがリスト20.47の実装です。リスト20.47では、アクセストークンから取得したユーザーIDとロールを`http.Request`型の値に含まれる`context.Context`型の値に埋め込む`handler.AuthMiddleware`を実行したあとに、`handler.AdminMiddleware`を実行する順序でミドルウェアを適用しています。」に修正・追記。  

@@ -87,10 +87,22 @@ mux.Post("/register", ru.ServeHTTP)
 「`return "", fmt.Errorf("GetAuthor: %v", err)`」ではなく、「`return "", fmt.Errorf("GetAuthorName: %v", err)`」に修正。  
 [@katutoshi](https://github.com/katutoshi) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/42) ありがとうございました（2022/09/02）
 
+**P77 SECTION-033 エラーについて**  
+「`Goではこのようチェーンして`」ではなく、「`Goではこのようにチェーンして`」に修正。  
+[WomenWhoGoTokyo](https://github.com/WomenWhoGoTokyo/book-reading-party)のみなさんご指摘ありがとうございました（2022/10/02）
+
 **P77 リスト8.4 チェーンされた最終的なエラーの出力**  
 「`GetBookSummary: GetAuthorName: GetUser: id is invalid`」ではなく、「`GetBookSummary: GetAuthorName: GetAuthor: id is invalid`」に修正。  
 [@katutoshi](https://github.com/katutoshi) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/42) ありがとうございました（2022/09/02）
 
+**P78 リスト8.5　「sql.ErrNoRows」と比較しても真になることはない**  
+**P79 リスト8.6　Go 1.13からのエラーラッピング**  
+「`func (r *Repo) GetBook(t BookTitle))(*Book, error) {`」ではなく、「`func (r *Repo) GetBook(t BookTitle)(*Book, error) {`」に修正。  
+[WomenWhoGoTokyo](https://github.com/WomenWhoGoTokyo/book-reading-party)のみなさんご指摘ありがとうございました（2022/10/02）
+
+**P81 リスト8.9　「errors.As」関数を使ってRDBMSのエラー情報を得る**  
+「`return fmt.Errorf("store: cannot save book_id %d: %w", ErrAlreadyExists)`」ではなく、「`return fmt.Errorf("store: cannot save book_id %d: %w", book.ID, ErrAlreadyExists)`」に修正。  
+[WomenWhoGoTokyo](https://github.com/WomenWhoGoTokyo/book-reading-party)のみなさんご指摘ありがとうございました（2022/10/02）
 
 **P89 リスト9.1　無名関数は状態を持てる**  
 `リスト9.1`ではなく、`リスト9.2`に修正。  

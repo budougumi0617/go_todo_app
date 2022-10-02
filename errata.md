@@ -189,6 +189,17 @@ if err != nil {
 「`TODO_DB_DATABASE: todo`」ではなく、「`TODO_DB_NAME: todo`」に修正。  
 [@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/39) ありがとうございました（2022/09/04）
 
+
+**P186 ローカルマs シン上のMySQLコンテナにマイグレーションを実施する**  
+「`make migrate コマンドを実行してマイグレーションを行います。`」という1文に下記の脚注リンクを追加。  
+https://github.com/budougumi0617/go_todo_app/blob/v1.0.7/Makefile  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/62) ありがとうございました（2022/10/02）
+
+**P187 ローカルマs シン上のMySQLコンテナにマイグレーションを実施する**  
+「`コメントを変更するなどしてから make drymigrateコマンドを実行するとマイグレーション用のDDLが生成される様子がわかります。`」という1文に下記の脚注リンクを追加。  
+https://github.com/budougumi0617/go_todo_app/blob/v1.0.7/Makefile  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/62) ありがとうございました（2022/10/02）
+
 **P187 SECTION-072 MySQL実行環境の構築**  
 「GitHub Actionis上でMySQLコンテナを起動します。」ではなく、「GitHub Actions上でMySQLコンテナを起動します。」に修正。  
 「GitHub Actionisではサービスコンテナという方法で」ではなく、「GitHub Actionsではサービスコンテナという方法で」に修正。  

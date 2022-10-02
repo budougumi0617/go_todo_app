@@ -306,6 +306,14 @@ func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
 「アクセストークンからユーザーIDをできるようになったので、」ではなく、「アクセストークンからユーザーIDを取得できるようになったので、」に修正。  
 [@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/66) ありがとうございました（2022/10/02）
 
+**P258 リスト20.42　「user_id」カラムへ対応した「*store.Repository.AddTask」メソッド**  
+ページ脚注に「リスト20.42の変更に対応するテストコードの修正は https://github.com/budougumi0617/go_todo_app/blob/v1.0.7/store/task_test.go を参照のこと」を追記。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/67) ありがとうございました（2022/10/02）
+
+**P259 リスト20.44　ユーザーIDを使ってタスクを検索する**  
+ページ脚注に「リスト20.44の変更に対応する`TaskLister`の修正は https://github.com/budougumi0617/go_todo_app/blob/v1.0.7/service/interface.go を参照のこと」を追記。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/67) ありがとうございました（2022/10/02）
+
 **P262 「admin」ロールのユーザーのみがアクセス可能なエンドポイントを作成する**  
 「ミドルウェアの適用順序に気をつけながら実装したのがapply_adminです。」ではなく、「ミドルウェアの適用順序に気をつけながら実装したのがリスト20.47の実装です。リスト20.47では、アクセストークンから取得したユーザーIDとロールを`http.Request`型の値に含まれる`context.Context`型の値に埋め込む`handler.AuthMiddleware`を実行したあとに、`handler.AdminMiddleware`を実行する順序でミドルウェアを適用しています。」に修正・追記。  
 [@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/45) ありがとうございました（2022/09/04）

@@ -189,13 +189,12 @@ if err != nil {
 「`TODO_DB_DATABASE: todo`」ではなく、「`TODO_DB_NAME: todo`」に修正。  
 [@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/39) ありがとうございました（2022/09/04）
 
-
-**P186 ローカルマs シン上のMySQLコンテナにマイグレーションを実施する**  
+**P186 ローカルマシン上のMySQLコンテナにマイグレーションを実施する**  
 「`make migrate コマンドを実行してマイグレーションを行います。`」という1文に下記の脚注リンクを追加。  
 https://github.com/budougumi0617/go_todo_app/blob/v1.0.7/Makefile  
 [@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/62) ありがとうございました（2022/10/02）
 
-**P187 ローカルマs シン上のMySQLコンテナにマイグレーションを実施する**  
+**P187 ローカルマシン上のMySQLコンテナにマイグレーションを実施する**  
 「`コメントを変更するなどしてから make drymigrateコマンドを実行するとマイグレーション用のDDLが生成される様子がわかります。`」という1文に下記の脚注リンクを追加。  
 https://github.com/budougumi0617/go_todo_app/blob/v1.0.7/Makefile  
 [@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/62) ありがとうございました（2022/10/02）
@@ -208,6 +207,10 @@ https://github.com/budougumi0617/go_todo_app/blob/v1.0.7/Makefile
 **P198 リスト18.19　「ListTasks」メソッドが期待されるデータを取得できるか検証**  
 「`t.Fatalf("unexected error: %v", err)`」ではなく、「`t.Fatalf("unexpected error: %v", err)`」に修正。  
 [@youta32449999](https://github.com/youta32449999)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/54) ありがとうございました（2022/09/15）
+
+**P200 リスト18.22　「github.com/DATA-DOG/go-sqlmock」を使ったRDBMSを用いないテスト**  
+「`t.Cleanup(func() {  db.Close() })`」ではなく、「`t.Cleanup(func() { _ = db.Close() })`」に修正。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/64) ありがとうございました（2022/10/02）
 
 **P216 「service」パッケージの実装**  
 「`store` パッケージを利用して実際の登録データを組み立てる処理がリスト19.21の実装です。」の後に「リスト19.21中で利用する`UserRegister`インターフェースの定義はサンプルコードリポジトリの[`_chapter19/section79/service/interface.go`](https://github.com/budougumi0617/go_todo_app/blob/main/_chapter19/section79/service/interface.go)を参考にご用意ください。」  

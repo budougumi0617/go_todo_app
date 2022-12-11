@@ -147,6 +147,11 @@ report:
 
 [@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/43) ありがとうございました（2022/09/04）
 
+**P148 テストとコードカバレッジ取得の自動実行**  
+macOSでgolangci-lintコマンドを実行時に「`can't extract issues from gofmt diff output`」のような主旨のエラーメッセージがでると[報告](https://github.com/budougumi0617/go_todo_app/discussions/74))されています。  
+https://github.com/golangci/golangci-lint/issues/3087 を参考に`brew install diffutils`を実行して`diff`コマンドを置き換えてください。
+
+[@nnabeyang](https://github.com/nnabeyang)さん[ご助言](https://github.com/budougumi0617/go_todo_app/discussions/74) ありがとうございました（2022/12/12）
 
 **P163 リスト16.16　「httptest」パッケージを使った擬似的なHTTPリクエストのテスト**  
 「`{"status": " ok"}`」ではなく、「`{"status": "ok"}`」に修正。  

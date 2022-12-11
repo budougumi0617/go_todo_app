@@ -147,6 +147,11 @@ report:
 
 [@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/43) ありがとうございました（2022/09/04）
 
+**P148 テストとコードカバレッジ取得の自動実行**  
+macOSでgolangci-lintコマンドを実行時に「`can't extract issues from gofmt diff output`」のような主旨のエラーメッセージがでると[報告](https://github.com/budougumi0617/go_todo_app/discussions/74))されています。  
+https://github.com/golangci/golangci-lint/issues/3087 を参考に`brew install diffutils`を実行して`diff`コマンドを置き換えてください。
+
+[@nnabeyang](https://github.com/nnabeyang)さん[ご助言](https://github.com/budougumi0617/go_todo_app/discussions/74) ありがとうございました（2022/12/12）
 
 **P163 リスト16.16　「httptest」パッケージを使った擬似的なHTTPリクエストのテスト**  
 「`{"status": " ok"}`」ではなく、「`{"status": "ok"}`」に修正。  
@@ -211,6 +216,11 @@ https://github.com/budougumi0617/go_todo_app/blob/v1.0.7/Makefile
 「GitHub Actionis上でMySQLコンテナを起動します。」ではなく、「GitHub Actions上でMySQLコンテナを起動します。」に修正。  
 「GitHub Actionisではサービスコンテナという方法で」ではなく、「GitHub Actionsではサービスコンテナという方法で」に修正。  
 [@kdnakt](https://twitter.com/kdnakt)さんご指摘ありがとうございました（2022/08/15）
+
+**P192 リスト18.13 設定情報からDBへの接続を開く**  
+`fmt.Sprint`関数を使って`sql.Open`関数にわたす接続用文字列を生成していますが、MySQLとの接続では`go-sql-driver`の`Config.FormatDSN`メソッドを利用できます。  
+https://pkg.go.dev/github.com/go-sql-driver/mysql#Config.FormatDSN   
+[@nnabeyang](https://github.com/nnabeyang)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/73) ありがとうございました（2022/12/12）
 
 **P198 リスト18.19　「ListTasks」メソッドが期待されるデータを取得できるか検証**  
 「`t.Fatalf("unexected error: %v", err)`」ではなく、「`t.Fatalf("unexpected error: %v", err)`」に修正。  

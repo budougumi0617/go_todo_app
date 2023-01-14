@@ -230,6 +230,10 @@ https://pkg.go.dev/github.com/go-sql-driver/mysql#Config.FormatDSN
 「`t.Cleanup(func() {  db.Close() })`」ではなく、「`t.Cleanup(func() { _ = db.Close() })`」に修正。  
 [@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/64) ありがとうございました（2022/10/02）
 
+**P200 リスト18.22　「github.com/DATA-DOG/go-sqlmock」を使ったRDBMSを用いないテスト**  
+「`).WithArgs(okTask.Title, okTask.Status, c.Now(), c.Now()).`」ではなく、「` ).WithArgs(okTask.Title, okTask.Status, okTask.Created, okTask.Modified).`」に修正。  
+[@halllllll](https://github.com/halllllll)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/76) ありがとうございました（2023/01/15）
+
 **P216 「service」パッケージの実装**  
 「`store` パッケージを利用して実際の登録データを組み立てる処理がリスト19.21の実装です。」の後に「リスト19.21中で利用する`UserRegister`インターフェースの定義はサンプルコードリポジトリの[`_chapter19/section79/service/interface.go`](https://github.com/budougumi0617/go_todo_app/blob/main/_chapter19/section79/service/interface.go)を参考にご用意ください。」  
 [@youta32449999](https://github.com/youta32449999)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/55) ありがとうございました（2022/09/15）
@@ -280,6 +284,10 @@ func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
 「OSSを利用してしてダミーデータを生成」ではなく、「OSSを利用してダミーデータを生成」に修正。  
 [@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/66) ありがとうございました（2022/10/02）
 
+**P236 「POST /tasks」でタスクを追加するときはユーザー情報をタスクに残す**  
+「アクセストークンからユーザーIDをできるようになったので、」ではなく、「アクセストークンからユーザーIDを取得できるようになったので、」に修正。  
+[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/66) ありがとうございました（2022/10/02）
+
 **P244 SECTION-085 ユーザーログインエンドポイントの実装**  
 「`LoginServiceインターフェースはauth/service.goに追記し，`」ではなく「`LoginServiceインターフェースはhandler/service.goに追記し，`」に修正。  
 [@manaty226](https://github.com/manaty226)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/27)ご指摘ありがとうございました（2022/08/10）
@@ -312,9 +320,27 @@ func NewJWTer(s Store, c clock.Clocker) (*JWTer, error) {
 「`jwter, err := auth.NewJWTer(rcli)`」ではなく、「`jwter, err := auth.NewJWTer(rcli, clocker)`」に修正。  
 [@ac0mz](https://github.com/ac0mz)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/44) ありがとうございました（2022/09/04）
 
-**P236 「POST /tasks」でタスクを追加するときはユーザー情報をタスクに残す**  
-「アクセストークンからユーザーIDをできるようになったので、」ではなく、「アクセストークンからユーザーIDを取得できるようになったので、」に修正。  
-[@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/66) ありがとうございました（2022/10/02）
+**P256 リスト20.40　「/tasks」エンドポイントに「AuthMiddleware」を適用する**
+リスト20.40を差分で記載すると次のようなコード修正になります。
+```diff
+   at := &handler.AddTask{
+     Service:   &service.AddTask{DB: db, Repo: &r},
+     Validator: v,
+   }
+-  mux.Post("/tasks", at.ServeHTTP)
+   lt := &handler.ListTask{
+     Service: &service.ListTask{DB: db, Repo: &r},
+   }
+-  mux.Get("/tasks", lt.ServeHTTP)
+
++  mux.Route("/tasks", func(r chi.Router) {
++    r.Use(handler.AuthMiddleware(jwter))
++    r.Post("/", at.ServeHTTP)
++    r.Get("/", lt.ServeHTTP)
++  })
+```
+[@smirror](https://github.com/smirror)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/77) ありがとうございました（2023/01/14）
+
 
 **P258 リスト20.42　「user_id」カラムへ対応した「*store.Repository.AddTask」メソッド**  
 ページ脚注に「リスト20.42の変更に対応するテストコードの修正は https://github.com/budougumi0617/go_todo_app/blob/v1.0.7/store/task_test.go を参照のこと」を追記。  

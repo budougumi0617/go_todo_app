@@ -230,6 +230,10 @@ https://pkg.go.dev/github.com/go-sql-driver/mysql#Config.FormatDSN
 「`t.Cleanup(func() {  db.Close() })`」ではなく、「`t.Cleanup(func() { _ = db.Close() })`」に修正。  
 [@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/64) ありがとうございました（2022/10/02）
 
+**P200 リスト18.22　「github.com/DATA-DOG/go-sqlmock」を使ったRDBMSを用いないテスト**  
+「`).WithArgs(okTask.Title, okTask.Status, c.Now(), c.Now()).`」ではなく、「` ).WithArgs(okTask.Title, okTask.Status, okTask.Created, okTask.Modified).`」に修正。  
+[@halllllll](https://github.com/halllllll)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/76) ありがとうございました（2023/01/15）
+
 **P216 「service」パッケージの実装**  
 「`store` パッケージを利用して実際の登録データを組み立てる処理がリスト19.21の実装です。」の後に「リスト19.21中で利用する`UserRegister`インターフェースの定義はサンプルコードリポジトリの[`_chapter19/section79/service/interface.go`](https://github.com/budougumi0617/go_todo_app/blob/main/_chapter19/section79/service/interface.go)を参考にご用意ください。」  
 [@youta32449999](https://github.com/youta32449999)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/55) ありがとうございました（2022/09/15）

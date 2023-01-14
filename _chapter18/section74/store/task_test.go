@@ -99,7 +99,7 @@ func TestRepository_AddTask(t *testing.T) {
 	mock.ExpectExec(
 		// エスケープが必要
 		`INSERT INTO task \(title, status, created, modified\) VALUES \(\?, \?, \?, \?\)`,
-	).WithArgs(okTask.Title, okTask.Status, c.Now(), c.Now()).
+	).WithArgs(okTask.Title, okTask.Status, okTask.Created, okTask.Modified).
 		WillReturnResult(sqlmock.NewResult(wantID, 1))
 
 	xdb := sqlx.NewDb(db, "mysql")

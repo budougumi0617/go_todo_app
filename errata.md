@@ -176,7 +176,6 @@ https://github.com/golangci/golangci-lint/issues/3087 を参考に`brew install 
 [@mizutec](https://twitter.com/mizutec)さん[ご指摘](https://twitter.com/mizutec/status/1555043156865208320)ありがとうございました（2022/08/06）  
 [@Mo3g4u](https://github.com/Mo3g4u)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/25)ありがとうございました（2022/08/06）
 
-
 **P172 SECTION-067タスクを登録するエンドポイントの実装**  
 「リクエストの処理が正常が完了する場合」ではなく、「リクエストの処理が正常に完了する場合」に修正。  
 [@y-magavel](https://github.com/y-magavel)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/66) ありがとうございました（2022/10/02）
@@ -227,6 +226,37 @@ https://github.com/budougumi0617/go_todo_app/blob/v1.0.7/Makefile
 `fmt.Sprint`関数を使って`sql.Open`関数にわたす接続用文字列を生成していますが、MySQLとの接続では`go-sql-driver`の`Config.FormatDSN`メソッドを利用できます。  
 https://pkg.go.dev/github.com/go-sql-driver/mysql#Config.FormatDSN   
 [@nnabeyang](https://github.com/nnabeyang)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/73) ありがとうございました（2022/12/12）
+
+**P192 リスト18.13 設定情報からDBへの接続を開く**  
+`sql.Open`関数の戻り値に対するエラーチェックで`return`する際の戻り値を「`nil, nil, err`」ではなく、「`nil, func() {}, err`」に修正。
+
+合わせてP204 リスト19.4の差分を
+```diff
+url := fmt.Sprintf("http://%s", l.Addr().String()) log.Printf("start with: %v", url)
+- mux := NewMux()
++ mux, cleanup, err := NewMux(ctx, cfg)
++ if err != nil {
++
++}
++ defer cleanup()
+s := NewServer(l, mux)
+```
+ではなく、
+```diff
+url := fmt.Sprintf("http://%s", l.Addr().String()) log.Printf("start with: %v", url)
+- mux := NewMux()
++ mux, cleanup, err := NewMux(ctx, cfg)
++ // エラーが返ってきてもcleanup関数は実行する
++ defer cleanup()
++ if err != nil {
++
++}
+s := NewServer(l, mux)
+```
+
+に修正。
+
+[@yamagit01](https://github.com/yamagit01)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/81)ありがとうございました（2023/01/29）
 
 **P198 リスト18.19　「ListTasks」メソッドが期待されるデータを取得できるか検証**  
 「`t.Fatalf("unexected error: %v", err)`」ではなく、「`t.Fatalf("unexpected error: %v", err)`」に修正。  

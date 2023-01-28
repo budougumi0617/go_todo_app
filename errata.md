@@ -80,7 +80,7 @@ mux.Post("/register", ru.ServeHTTP)
 # 第2刷（2022年8月19日発行）
 **P48 COLUMN 「internal」パッケージ**  
 「たとえば、`example.com/root/internal`パッケージに`exported`な`Hooga`型が宣言されていた場合でも、」ではなく、
-「たとえば、`example.com/root/internal`パッケージに`exported`な`Hoge`型が宣言されていた場合でも、」に修正。
+「たとえば、`example.com/root/internal`パッケージに`exported`な`Hoge`型が宣言されていた場合でも、」に修正。  
 [@yakkun](https://github.com/yakkun)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/80) ありがとうございました（2023/01/29）
 
 

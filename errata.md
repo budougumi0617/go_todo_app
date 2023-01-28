@@ -78,6 +78,12 @@ mux.Post("/register", ru.ServeHTTP)
 という装飾に修正。
 
 # 第2刷（2022年8月19日発行）
+**P48 COLUMN 「internal」パッケージ**  
+「たとえば、`example.com/root/internal`パッケージに`exported`な`Hooga`型が宣言されていた場合でも、」ではなく、
+「たとえば、`example.com/root/internal`パッケージに`exported`な`Hoge`型が宣言されていた場合でも、」に修正。
+[@yakkun](https://github.com/yakkun)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/80) ありがとうございました（2023/01/29）
+
+
 **P77 リスト8.3　「errors.New」関数と「fmt.Errorf」関数**  
 「`return errors.New("GetAuthor: id is invalid")`」ではなく、「`return nil, errors.New("GetAuthor: id is invalid")`」に修正。  
 [@fuuukeee3](https://github.com/fuuukeee3) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/42) ありがとうございました（2022/09/02）

@@ -35,7 +35,7 @@ func New(ctx context.Context, cfg *config.Config) (*sqlx.DB, func(), error) {
 		),
 	)
 	if err != nil {
-		return nil, nil, err
+		return nil, func() {}, err
 	}
 	// Openは実際に接続テストが行われない。
 	ctx, cancel := context.WithTimeout(ctx, 2*time.Second)

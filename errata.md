@@ -270,9 +270,9 @@ s := NewServer(l, mux)
 「`).WithArgs(okTask.Title, okTask.Status, c.Now(), c.Now()).`」ではなく、「` ).WithArgs(okTask.Title, okTask.Status, okTask.Created, okTask.Modified).`」に修正。  
 [@halllllll](https://github.com/halllllll)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/76) ありがとうございました（2023/01/15）
 
-**P204 HTTP ハンドラーから RDBMS を使った永続化を行う**  
-「`run 関数の実装も NewMux 関数のシグネチャの変更に伴ってリスト19.4のように変更しました。`」のあとに「`単純な動作確認のみのmux_test.goはここでファイルごと削除します。`」を追加。  
-[@mom0tomo](https://github.com/mom0tomo)さん、[@mi-bear](https://github.com/mi-bear)さん、[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/83) ありがとうございました（2023/03/20）
+**P204 HTTPハンドラーからRDBMSを使った永続化を行う**  
+「`ru 関数の実装もNewMux関数のシグネチャの変更に伴ってリスト19.4のように変更しました。`」のあとに「`単純な動作確認のみのmux_test.goはここでファイルごと削除します。`」を追加。  
+[@mom0tomo](https://github.com/mom0tomo)さん、[@mi-bear](https://github.com/mi-bear)さん、[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/83)ありがとうございました（2023/03/20）
 
 **P216 「service」パッケージの実装**  
 「`store` パッケージを利用して実際の登録データを組み立てる処理がリスト19.21の実装です。」の後に「リスト19.21中で利用する`UserRegister`インターフェースの定義はサンプルコードリポジトリの[`_chapter19/section79/service/interface.go`](https://github.com/budougumi0617/go_todo_app/blob/main/_chapter19/section79/service/interface.go)を参考にご用意ください。」  

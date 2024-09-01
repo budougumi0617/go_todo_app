@@ -83,6 +83,9 @@ mux.Post("/register", ru.ServeHTTP)
 「たとえば、`example.com/root/internal`パッケージに`exported`な`Hoge`型が宣言されていた場合でも、」に修正。  
 [@yakkun](https://github.com/yakkun)さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/80) ありがとうございました（2023/01/29）
 
+**P50 SECTION-019 モジュールとパッケージ**  
+「`たとえば、あるGitHubeにあるリポジトリが1モジュールで、`」ではなく、「`たとえば、あるGitHubにあるリポジトリが1モジュールで、`」に修正。  
+[@hajipy](https://github.com/hajipy) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/89) ありがとうございました（2022/09/02）
 
 **P77 リスト8.3　「errors.New」関数と「fmt.Errorf」関数**  
 「`return errors.New("GetAuthor: id is invalid")`」ではなく、「`return nil, errors.New("GetAuthor: id is invalid")`」に修正。  

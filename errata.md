@@ -85,7 +85,11 @@ mux.Post("/register", ru.ServeHTTP)
 
 **P50 SECTION-019 モジュールとパッケージ**  
 「`たとえば、あるGitHubeにあるリポジトリが1モジュールで、`」ではなく、「`たとえば、あるGitHubにあるリポジトリが1モジュールで、`」に修正。  
-[@hajipy](https://github.com/hajipy) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/89) ありがとうございました（2022/09/02）
+[@hajipy](https://github.com/hajipy) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/89) ありがとうございました（2024/09/01）
+
+**P51 SECTION-020 Go Modules**  
+「`極力、古いバージョンが選択されるので「パッケージX」は「パッケージX v1.0.1」が選ばれます。`」ではなく、「`「パッケージX」はたとえv1.0.9がリリースされていても、「パッケージX v1.0.8」が選ばれます。`」に修正。  
+[@hajipy](https://github.com/hajipy) さん[ご指摘](https://github.com/budougumi0617/go_todo_app/discussions/90) ありがとうございました（2024/09/01）
 
 **P77 リスト8.3　「errors.New」関数と「fmt.Errorf」関数**  
 「`return errors.New("GetAuthor: id is invalid")`」ではなく、「`return nil, errors.New("GetAuthor: id is invalid")`」に修正。  
